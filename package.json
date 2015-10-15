@@ -1,0 +1,14 @@
+{
+  "name": "2015-hr-resolution",
+  "version": "1.0.0",
+  "description": "2015 DE Hampton Roads Resolutions app",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "dependencies": {
+    "hapi": "8.x.x"
+  },
+  "author": "Homes.com",
+  "license": "MIT"
+}
