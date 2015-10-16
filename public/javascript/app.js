@@ -1,10 +1,21 @@
 var a = 'Hello world';
 console.log(a);
+
 var ngModule = angular.module;
 ngModule('hrApp', [
 	'home',
-	'about'
+	'about',
+	'globalNav'
 ]);
+
+ngModule('globalNav', [])
+	.directive('globalNav', function () {
+		return {
+			restrict: 'E',
+			replace: true,
+			templateUrl: 'views/global-nav.html'
+		}
+	});
 
 ngModule('home', [])
 	.directive('homePage', function () {
@@ -23,7 +34,6 @@ ngModule('home', [])
 	.controller('homePageController', [
 	    '$scope',
 	    function ($scope) {
-	        console.log($scope, 'scope');
 	        var self = this;
 	        self.name = 'ragefukingshit';
 	    }
@@ -50,7 +60,13 @@ ngModule('about', [])
 			self.title = 'yay wtf';
 			console.log('about page scope');
 		}]);
-
+// html 5 mode on
+// ngModule.config([
+//     '$locationProvider',
+//     function ($locationProvider) {
+//         $locationProvider.html5Mode(true);
+//     }
+// ]);
 // bootstrapping the application this way avoids clutting up the
 // home page with 'ngapp=hrapp'	
 angular.element(document).ready(function () {
