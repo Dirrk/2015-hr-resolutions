@@ -123,7 +123,7 @@ ngModule('donate', [])
 
 app.config(function($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
-    //$urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/");
     $stateProvider
         .state('root', {
             url: '/',
@@ -142,8 +142,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('events', {
             url: '/events',
-            templateUrl: '',
-            controller: ''
+            templateUrl: '/views/events.html',
+            controller: 'eventsPageController'
         });
 
 
