@@ -26,6 +26,8 @@ body {
 	background-color: $blue;
 	box-sizing: border-box;
 	margin: 0 auto;
+	left: 50%;
+	transform: translateX(-50%);
 
 	img {
 		margin: 20px;
@@ -35,12 +37,26 @@ body {
 		background-color: $darkYellow;
 		text-transform: uppercase;
 		font-weight: 800;
+		letter-spacing: 1px;
+		text-align: center;
 	}
+}
+
+.container {
+	&.inside {
+		margin-top: 50px;
+	}
+}
+
+.home-donate {
+	background-image: url('/img/LandingPage_left.png');
+}
+.home-events {
+	background-image: url('/img/LandingPage_right.png');
 }
 
 .home-donate, .home-events {
 	height: 100%;
-	background-image: url('/img/lemons.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 50%;
@@ -55,14 +71,30 @@ body {
 	    height: 100%;
 	    vertical-align: bottom;
 	    display: inline-block;
-	    margin-bottom: -50%;
+	    margin-bottom: -60%;
 	}
 
 	.btn {
-		// bottom: 15%;
-		// left: 15%;
 		bottom: 0;
 		padding-left: 50px;
 		padding-right: 50px;
+	}
+}
+
+.footer {
+	background-color: $darkYellow;
+	text-transform: uppercase;
+	position: absolute;
+	bottom: 0;
+	padding: 8px 8px 8px 8px;
+	width: 320px;
+	text-align: center;
+	font-weight: 800;
+	color: $darkerBlue;
+	left: 50%;
+	transform: translateX(-50%);
+
+	img {
+		margin: -5px 5px 0 0;
 	}
 }
