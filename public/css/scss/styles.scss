@@ -10,6 +10,11 @@ body {
 	z-index: 10;
 }
 
+
+.navigation {
+	height: 50px;
+}
+
 .navbar-default {
 	margin: 0;
 	position: fixed;
@@ -20,6 +25,10 @@ body {
 
 	.navbar-toggle {
 		background-color: #fff;
+	}
+
+	.inside & {
+		margin: 0 0 0 -15px;
 	}
 }
 .logo {
@@ -39,12 +48,6 @@ body {
 		font-weight: 800;
 		letter-spacing: 1px;
 		text-align: center;
-	}
-}
-
-.container {
-	&.inside {
-		margin-top: 50px;
 	}
 }
 
