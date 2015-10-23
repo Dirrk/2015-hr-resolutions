@@ -26,16 +26,14 @@ ngModule('home', [])
             controllerAs: 'homePageCtrl',
             template: '<div><p>{{homePageCtrl.name}}</p></div>',
             replace: true,
-            scope: {
-
-            }
+            scope: {}
         }
     })
     .controller('homePageController', [
         '$scope',
         function ($scope) {
             var self = this;
-            self.name = 'ragefukingshit';
+            self.name = 'Home Page View';
         }
     ]);
 
@@ -48,9 +46,8 @@ ngModule('about', [])
             controllerAs: 'aboutPageCtrl',
             template: '<div><p>{{aboutPageCtrl.title}}</p></div>',
             replace: true,
-            scope: {
+            scope: {}
 
-            }
         }
     })
     .controller('aboutPageController', [
@@ -59,7 +56,8 @@ ngModule('about', [])
             var self = this;
             self.title = 'yay wtf';
             console.log('about page scope');
-        }]);
+        }
+    ]);
 // html 5 mode on
 // ngModule.config([
 //     '$locationProvider',
