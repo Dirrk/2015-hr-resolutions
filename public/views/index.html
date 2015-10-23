@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Custom stylehseet !-->
     <link rel="stylesheet" href="/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -22,9 +23,10 @@
 <body>
 <data-global-nav></data-global-nav>
 <div class="container-wide">
-    <section data-ui-view></section>
-    <a ui-sref="about">State 1</a>
-    <a ui-sref="donate">State 2</a>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 home-donate"><button type="button" class="btn btn-primary btn-lg" ui-sref="donate">Donate</button></div>
+        <div class="col-xs-6 col-sm-6 col-md-6 home-events"><button type="button" class="btn btn-primary btn-lg" ui-sref="event">Events</button></div>
+    </div>
 </div>
 </body>
 </html>
