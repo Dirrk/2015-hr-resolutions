@@ -11,4 +11,6 @@
   .home-donate button, .home-events button {
     position: absolute;
     bottom: 20%;
-    left: 30%; }
+    left: 20%;
+    padding-left: 50px;
+    padding-right: 50px; }
