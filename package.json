@@ -4,6 +4,7 @@
   "description": "2015 DE Hampton Roads Resolutions app",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "npm test"
   },
   "dependencies": {
