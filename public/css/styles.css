@@ -1,6 +1,12 @@
+body {
+  font-family: 'Dosis', sans-serif; }
+
+.navbar-default, .logo {
+  position: fixed;
+  z-index: 10; }
+
 .navbar-default {
   margin: 0;
-  z-index: 10;
   position: fixed;
   box-sizing: border-box;
   width: 100%;
@@ -22,12 +28,15 @@
   box-sizing: border-box;
   padding: 20px;
   text-align: center;
-  position: relative;
-  vertical-align: bottom; }
+  position: relative; }
+  .home-donate:before, .home-events:before {
+    content: '';
+    height: 100%;
+    vertical-align: bottom;
+    display: inline-block;
+    margin-bottom: -40%; }
   .home-donate .btn, .home-events .btn {
-    position: absolute;
-    bottom: 15%;
-    left: 15%;
+    bottom: 0;
     padding-left: 50px;
     padding-right: 50px; }
 

@@ -121,6 +121,16 @@ ngModule('donate', [])
         }
     ]);
 
+ngModule('myAccount', [])
+    .controller('myAccountPageController', [
+        '$scope',
+        function ($scope) {
+            var self = this;
+            self.title = 'My Account';
+            console.log('my account page scope');
+        }
+    ]);
+
 app.config(function($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/");
@@ -144,6 +154,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/events',
             templateUrl: '/views/events.html',
             controller: 'eventsPageController'
+        })
+        .state('my-account', {
+            url: '/my-account',
+            templateUrl: '/views/my-account.html',
+            controller: 'myAccountPageController'
         });
 
 

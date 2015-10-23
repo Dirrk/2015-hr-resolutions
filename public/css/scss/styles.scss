@@ -1,6 +1,19 @@
+$blue: #009FCF;
+$darkYellow: #e9d518;
+$lightYellow: #fff100;
+$grey: #404041;
+
+body {
+	font-family: 'Dosis', sans-serif;
+}
+
+.navbar-default, .logo {
+	position: fixed;
+	z-index: 10;
+}
+
 .navbar-default {
 	margin: 0;
-	z-index: 10;
 	position: fixed;
 	box-sizing: border-box;
 	width: 100%;
@@ -26,12 +39,19 @@
 	padding: 20px;
 	text-align: center;
 	position: relative;
-	vertical-align: bottom;
+
+	&:before{
+		content: '';
+	    height: 100%;
+	    vertical-align: bottom;
+	    display: inline-block;
+	    margin-bottom: -40%;
+	}
 
 	.btn {
-		position: absolute;
-		bottom: 15%;
-		left: 15%;
+		// bottom: 15%;
+		// left: 15%;
+		bottom: 0;
 		padding-left: 50px;
 		padding-right: 50px;
 	}
