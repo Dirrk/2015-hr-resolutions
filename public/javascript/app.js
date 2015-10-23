@@ -150,7 +150,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('root', {
             url: '/',
-            templateUrl: '/views/home.html',
+            templateUrl: '/views/index.html',
             controller: 'homePageController'
         })
         .state('about', {
