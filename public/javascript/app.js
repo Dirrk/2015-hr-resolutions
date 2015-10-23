@@ -81,6 +81,17 @@ app.service('eventsService', [
                 return service.$get(requestOptions);
             }
         };
+
+        service.get = function get(id) {
+            console.log(id);
+            return $http.get('/api/events/id/' + id)
+                .then(function (response) {
+                    console.log('singleEvent:', response);
+                    return response;
+            }, function (error) {
+                console.log(error);
+            });
+        };
     }
 ]);
 
@@ -107,7 +118,6 @@ app.service('donationService', [
             });
         };
 
-
         service.searchCall = function (text) {
             var requestOptions = {
                 params: {}
@@ -127,6 +137,16 @@ app.service('donationService', [
             } else {
                 return service.$get(requestOptions);
             }
+        };
+
+        service.get = function get(id) {
+            return $http.get('/api/donations/' + id)
+                .then(function (response) {
+                    console.log('singleDonation:', response);
+                    return response;
+            }, function (error) {
+                console.log(error);
+            });
         };
     }
 ]);
@@ -214,10 +234,27 @@ ngModule('events', [])
         }
     ])
     .controller('eventDetailPageController', [
-        '$scope',
-        function ($scope) {
+        '$scope', 'eventsService', '$stateParams',
+        function ($scope, eventsService, $stateParams) {
+            'use strict';
             var self = this;
 
+            console.log($stateParams);
+
+            $scope.$watch(function () {
+                return self.event;
+            }, function (data) {
+                console.log('data received', data);
+                if (data) {
+                    $scope.event = data.resp.doc;
+                    setTimeout($scope.$digest, 0);
+                }
+            });
+            eventsService.get($stateParams.id).then(function (data) {
+                self.event = data.data;
+            });
+            self.event = undefined;
+            $scope.event = self.event;
         }
     ]);
 
@@ -292,8 +329,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/events.html',
             controller: 'eventsPageController'
         })
-        .state('eventsList', {
-            url: '/eventsList',
+        .state('eventsDetail', {
+            url: '/events/:id',
             templateUrl: '/views/event-detail.html',
             controller: 'eventDetailPageController'
         })
