@@ -20,6 +20,21 @@ ngModule('globalNav', [])
         }
     });
 
+// THIS IS A SERVICE. RETURN THINGS HERE
+ngModule.service('entryService', ['$http', function ($http) {
+    var service = this;
+    $http({
+        method: 'GET',
+        url: 'http://hack4hr2015.herokuapp.com/api/events'
+    }).then(function (response) {
+        return response.data.resp.doc;
+    }, function (error) {
+        console.log(error);
+    });
+}]);
+
+// END THE SERVICE
+
 ngModule('home', [])
     .directive('homePage', function () {
         return {
@@ -44,7 +59,7 @@ ngModule('home', [])
 
             response = $http({
                 method: 'GET',
-                url: 'http://hack4hr2015.herokuapp.com/api/events/id/0e202308-779f-481e-a52f-9902db214274'
+                url: 'http://hack4hr2015.herokuapp.com/api/events'
             }).then(function (response) {
                 return response.data.resp.doc;
             }, function (error) {
