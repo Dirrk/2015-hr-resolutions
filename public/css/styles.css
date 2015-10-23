@@ -6,6 +6,9 @@ body {
   position: fixed;
   z-index: 10; }
 
+.navigation {
+  height: 50px; }
+
 .navbar-default {
   margin: 0;
   position: fixed;
@@ -15,6 +18,8 @@ body {
   border-width: 0; }
   .navbar-default .navbar-toggle {
     background-color: #fff; }
+  .inside .navbar-default {
+    margin: 0 0 0 -15px; }
 
 .logo {
   background-color: #009FCF;
@@ -31,9 +36,6 @@ body {
     font-weight: 800;
     letter-spacing: 1px;
     text-align: center; }
-
-.container.inside {
-  margin-top: 50px; }
 
 .home-donate {
   background-image: url("/img/LandingPage_left.png"); }
