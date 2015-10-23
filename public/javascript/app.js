@@ -35,7 +35,7 @@ ngModule('home', [])
 	    '$scope',
 	    function ($scope) {
 	        var self = this;
-	        self.name = 'ragefukingshit';
+	        self.name = 'Home Page View';
 	    }
 	]);
 
@@ -57,7 +57,7 @@ ngModule('about', [])
 		'$scope',
 		function ($scope) {
 			var self = this;
-			self.title = 'yay wtf';
+			self.title = 'yay About Page View';
 			console.log('about page scope');
 		}]);
 // html 5 mode on
@@ -68,7 +68,7 @@ ngModule('about', [])
 //     }
 // ]);
 // bootstrapping the application this way avoids clutting up the
-// home page with 'ngapp=hrapp'	
+// home page with 'ngapp=hrapp'
 angular.element(document).ready(function () {
 	angular.bootstrap(document, ['hrApp']);
 });
