@@ -8,7 +8,8 @@ var app = ngModule('hrApp', [
     'donate',
     'events',
     'globalNav',
-    'ui.router'
+    'ui.router',
+    'geolocation'
 ]);
 
 ngModule('globalNav', [])
@@ -38,20 +39,22 @@ ngModule('globalNav', [])
 
 // THIS IS A SERVICE. RETURN THINGS HERE
 app.service('entryService', [
-    '$http', function ($http) {
-        var service = this,
-            req,
-            text;
+    '$http', 'geolocation', function ($http, geoLocation) {
+        'use strict';
+        var service = this;
 
-        req = {
-            method: 'GET',
-            url: 'http://hack4hr2015.herokuapp.com/api/events/id/0e202308-779f-481e-a52f-9902db214274',
-            data: {location: text}
-        };
-        service.get = function () {
-            return $http(req).then(function (response) {
-                text = response.data.resp.doc;
-                return text;
+        service.location_info = {
+            lat: 0,
+            lon: 0
+        }
+
+        service.$get = function (options) {
+            options.params.lat = service.location_info.lat;
+            options.params.lon = service.location_info.lon;
+            return $http.get('/api/events/location', options)
+                .then(function (response) {
+                    console.log(response);
+                    return response;
             }, function (error) {
                 console.log(error);
             });
@@ -59,11 +62,25 @@ app.service('entryService', [
 
 
         service.searchCall = function (text) {
-            request = text;
-            console.log('hey the search was called ' + text);
-
+            var requestOptions = {
+                params: {}
+            };
+            if (text && text.length > 0) {
+                requestOptions.params.search = text;
+            }
+            if (service.location_info.lat === 0) {
+                return geoLocation.getLocation()
+                    .then(function (data) {
+                        service.location_info.lat = data.coords.latitude;
+                        service.location_info.lon = data.coords.longitude;
+                    })
+                    .then(function () {
+                        service.$get(requestOptions);
+                    });
+            } else {
+                return service.$get(requestOptions);
+            }
         };
-        console.log(service.searchCall());
     }
 ]);
 
