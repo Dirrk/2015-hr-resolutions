@@ -3,7 +3,11 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Latest compiled and minified JavaScript -->
@@ -11,6 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
+    <script src="javascript/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="/javascript/app.js"></script>
 
 </head>
@@ -18,8 +23,9 @@
 <data-global-nav></data-global-nav>
 <div class="container-wide">
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 home-donate"><h2>Donate</h2></div>
-        <div class="col-xs-6 col-sm-6 col-md-6 home-events"><h2>Events</h2></div>
+        <div classs="logo"></div>
+        <div class="col-xs-6 col-sm-6 col-md-6 home-donate"><button type="button" class="btn btn-primary btn-lg" ui-sref="donate">Donate</button></div>
+        <div class="col-xs-6 col-sm-6 col-md-6 home-events"><button type="button" class="btn btn-primary btn-lg" ui-sref="event">Events</button></div>
     </div>
 </div>
 </body>

@@ -1,7 +1,19 @@
 .home-donate, .home-events {
+	height: 100%;
 	background-image: url('http://placehold.it/300x800');
-	background-size: cover;
+	background-size: contain;
 	vertical-align: bottom;
 	box-sizing: border-box;
 	padding: 20px;
+	text-align: center;
+	position: relative;
+	vertical-align: bottom;
+
+	button {
+		position: absolute;
+		bottom: 20%;
+		left: 20%;
+		padding-left: 50px;
+		padding-right: 50px;
+	}
 }
