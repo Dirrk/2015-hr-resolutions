@@ -20,18 +20,33 @@ ngModule('globalNav', [])
         }
     });
 
+// THIS IS A SERVICE. RETURN THINGS HERE
+ngModule.service('entryService', ['$http', function ($http) {
+    var service = this;
+    $http({
+        method: 'GET',
+        url: 'http://hack4hr2015.herokuapp.com/api/events'
+    }).then(function (response) {
+        return response.data.resp.doc;
+    }, function (error) {
+        console.log(error);
+    });
+}]);
+
+// END THE SERVICE
+
 ngModule('home', [])
-    //.directive('homePage', function () {
-    //    return {
-    //        restrict: 'E',
-    //        bindToController: true,
-    //        controller: 'homePageController',
-    //        controllerAs: 'homePageCtrl',
-    //        templateUrl: '../views/home.html',
-    //        replace: true,
-    //        scope: {}
-    //    }
-    //})
+    .directive('homePage', function () {
+        return {
+            restrict: 'E',
+            bindToController: true,
+            controller: 'homePageController',
+            controllerAs: 'homePageCtrl',
+            template: '<div><p>{{homePageCtrl.name}}</p></div>',
+            replace: true,
+            scope: {}
+        }
+    })
     .controller('homePageController', [
         '$http',
         '$scope',
@@ -44,9 +59,9 @@ ngModule('home', [])
 
             response = $http({
                 method: 'GET',
-                url: 'http://hack4hr2015.herokuapp.com/api/events/id/0e202308-779f-481e-a52f-9902db214274'
+                url: 'http://hack4hr2015.herokuapp.com/api/events'
             }).then(function (response) {
-               return response.data.resp.doc;
+                return response.data.resp.doc;
             }, function (error) {
                 console.log(error);
             });
@@ -56,18 +71,18 @@ ngModule('home', [])
     ]);
 
 ngModule('about', [])
-    //.directive('aboutPage', function () {
-    //    return {
-    //        restrict: 'E',
-    //        bindToController: true,
-    //        controller: 'aboutPageController',
-    //        controllerAs: 'aboutPageCtrl',
-    //        template: '<div><p>{{aboutPageCtrl.title}}</p></div>',
-    //        replace: true,
-    //        scope: {}
-    //
-    //    }
-    //})
+    .directive('aboutPage', function () {
+        return {
+            restrict: 'E',
+            bindToController: true,
+            controller: 'aboutPageController',
+            controllerAs: 'aboutPageCtrl',
+            template: '<div><p>{{aboutPageCtrl.title}}</p></div>',
+            replace: true,
+            scope: {}
+
+        }
+    })
     .controller('aboutPageController', [
         '$scope',
         function ($scope) {
@@ -78,18 +93,18 @@ ngModule('about', [])
     ]);
 
 ngModule('events', [])
-    //.directive('eventsPate', function () {
-    //    return {
-    //        restrict: 'E',
-    //        bindToController: true,
-    //        controller: 'eventsPageController',
-    //        controllerAs: 'eventsPageCtrl',
-    //        template: '<div><p>{{eventsPageCtrl.title}}</p></div>',
-    //        replace: true,
-    //        scope: {}
-    //
-    //    }
-    //})
+    .directive('eventsPate', function () {
+        return {
+            restrict: 'E',
+            bindToController: true,
+            controller: 'eventsPageController',
+            controllerAs: 'eventsPageCtrl',
+            template: '<div><p>{{eventsPageCtrl.title}}</p></div>',
+            replace: true,
+            scope: {}
+
+        }
+    })
     .controller('eventsPageController', [
         '$scope',
         function ($scope) {
@@ -97,21 +112,27 @@ ngModule('events', [])
             self.title = 'yay wtf';
             console.log('events page scope');
         }
-    ]);
+    ])
+    .controller('eventDetailPageController', [
+        '$scope',
+        function ($scope) {
+            var self = this;
+
+        }]);
 
 ngModule('donate', [])
-    //.directive('donatePage', function () {
-    //    return {
-    //        restrict: 'E',
-    //        bindToController: true,
-    //        controller: 'donatePageController',
-    //        controllerAs: 'donatePageCtrl',
-    //        template: '<div><p>{{donatePageCtrl.title}}</p></div>',
-    //        replace: true,
-    //        scope: {}
-    //
-    //    }
-    //})
+    .directive('donatePage', function () {
+        return {
+            restrict: 'E',
+            bindToController: true,
+            controller: 'donatePageController',
+            controllerAs: 'donatePageCtrl',
+            template: '<div><p>{{donatePageCtrl.title}}</p></div>',
+            replace: true,
+            scope: {}
+
+        }
+    })
     .controller('donatePageController', [
         '$scope',
         function ($scope) {
@@ -121,13 +142,15 @@ ngModule('donate', [])
         }
     ]);
 
+// bootstrapping the application this way avoids clutting up the
+// home page with 'ngapp=hrapp'
 app.config(function($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/");
     $stateProvider
         .state('root', {
             url: '/',
-            templateUrl: '/views/home.html',
+            templateUrl: '/views/index.html',
             controller: 'homePageController'
         })
         .state('about', {
@@ -144,13 +167,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/events',
             templateUrl: '/views/events.html',
             controller: 'eventsPageController'
+        })
+        .state('eventsList', {
+            url: '/eventsList',
+            templateUrl: '/views/event-detail.html',
+            controller: 'eventDetailPageController'
         });
 
 
 });
-
-// bootstrapping the application this way avoids clutting up the
-// home page with 'ngapp=hrapp'
 angular.element(document).ready(function () {
     angular.bootstrap(document, ['hrApp']);
 });
