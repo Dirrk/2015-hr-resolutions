@@ -14,7 +14,8 @@
     "joi": "^6.9.1",
     "elasticsearch": "8.x.x",
     "node-uuid": "1.x.x",
-    "node-geocoder": "3.x.x"
+    "node-geocoder": "3.x.x",
+    "to-title-case": "0.x.x"
   },
   "engines": {
     "node": "0.10.x"
