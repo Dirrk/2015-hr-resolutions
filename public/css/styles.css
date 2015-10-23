@@ -1,17 +1,33 @@
+.navbar-default {
+  margin: 0;
+  z-index: 10;
+  position: fixed;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: transparent;
+  border-width: 0; }
+  .navbar-default .navbar-toggle {
+    background-color: #fff; }
+
+.container {
+  padding: 0; }
+
 .home-donate, .home-events {
   height: 100%;
   background-image: url("http://placehold.it/300x800");
-  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
   vertical-align: bottom;
   box-sizing: border-box;
   padding: 20px;
   text-align: center;
   position: relative;
   vertical-align: bottom; }
-  .home-donate button, .home-events button {
+  .home-donate .btn, .home-events .btn {
     position: absolute;
-    bottom: 20%;
-    left: 20%;
+    bottom: 15%;
+    left: 15%;
     padding-left: 50px;
     padding-right: 50px; }
 
