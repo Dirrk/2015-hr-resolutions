@@ -97,7 +97,13 @@ ngModule('events', [])
             self.title = 'yay wtf';
             console.log('events page scope');
         }
-    ]);
+    ])
+    .controller('eventDetailPageController', [
+        '$scope',
+        function ($scope) {
+            var self = this;
+
+    }]);
 
 ngModule('donate', [])
     .directive('donatePage', function () {
@@ -146,6 +152,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/events',
             templateUrl: '/views/events.html',
             controller: 'eventsPageController'
+        })
+        .state('eventsList', {
+            url: '/eventsList',
+            templateUrl: '/views/event-detail.html',
+            controller: 'eventDetailPageController'
         });
 
 
