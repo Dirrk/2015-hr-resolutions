@@ -13,7 +13,7 @@ ngModule('globalNav', [])
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: 'views/global-nav.html'
+            templateUrl: '../views/global-nav.html'
         }
     });
 

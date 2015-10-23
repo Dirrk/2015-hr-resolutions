@@ -6,13 +6,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bootstrap": "~3",
     "angular": "~1.4",
     "angular-resource": "~1.4",
     "angular-animate": "~1.4",
     "angular-mocks": "~1.4",
-    "angular-bootstrap": "~0.13",
-    "angular-bootstrap": "~0.13",
     "angular-ui-utils": "~0.2",
     "angular-ui-router": "~0.2.15"
   }
