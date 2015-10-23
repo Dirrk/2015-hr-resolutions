@@ -1,10 +1,8 @@
-$blue: #009FCF;
-$darkYellow: #e9d518;
-$lightYellow: #fff100;
-$grey: #404041;
+@import "defaults";
 
 body {
 	font-family: 'Dosis', sans-serif;
+	font-size: $font-size-default;
 }
 
 .navbar-default, .logo {
@@ -24,13 +22,25 @@ body {
 		background-color: #fff;
 	}
 }
+.logo {
+	background-color: $blue;
+	box-sizing: border-box;
+	margin: 0 auto;
 
-.container {
-	padding: 0;
+	img {
+		margin: 20px;
+	}
+	.tagline {
+		padding: 5px;
+		background-color: $darkYellow;
+		text-transform: uppercase;
+		font-weight: 800;
+	}
 }
+
 .home-donate, .home-events {
 	height: 100%;
-	background-image: url('http://placehold.it/300x800');
+	background-image: url('/img/lemons.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 50%;
@@ -45,7 +55,7 @@ body {
 	    height: 100%;
 	    vertical-align: bottom;
 	    display: inline-block;
-	    margin-bottom: -40%;
+	    margin-bottom: -50%;
 	}
 
 	.btn {
