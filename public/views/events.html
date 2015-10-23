@@ -1,8 +1,13 @@
 <div class="container inside">
-    <div class="navigation">
-        <data-global-nav></data-global-nav>
-    </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">Events</div>
+        <div class="navigation">
+            <data-global-nav></data-global-nav>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <p>Something</p>
+            <ul ng-repeat="event in events.result">
+                <li>{{event.description}}</li>
+            </ul>
+        </div>
     </div>
 </div>
