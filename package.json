@@ -8,12 +8,16 @@
     "test": "npm test"
   },
   "dependencies": {
+    "elasticsearch": "8.x.x",
     "hapi": "8.x.x",
     "hoek-boom": "1.x.x",
-    "elasticsearch": "8.x.x"
+    "joi": "^6.9.1",
+    "elasticsearch": "8.x.x",
+    "node-uuid": "1.x.x",
+    "node-geocoder": "3.x.x"
   },
   "engines": {
-	"node": "0.10.x"
+    "node": "0.10.x"
   },
   "author": "Homes.com",
   "license": "MIT"

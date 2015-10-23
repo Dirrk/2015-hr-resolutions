@@ -46,7 +46,7 @@ ngModule('home', [])
                 method: 'GET',
                 url: 'http://hack4hr2015.herokuapp.com/api/events/id/0e202308-779f-481e-a52f-9902db214274'
             }).then(function (response) {
-               return response.data.resp.doc;
+                return response.data.resp.doc;
             }, function (error) {
                 console.log(error);
             });
@@ -103,7 +103,7 @@ ngModule('events', [])
         function ($scope) {
             var self = this;
 
-    }]);
+        }]);
 
 ngModule('donate', [])
     .directive('donatePage', function () {
