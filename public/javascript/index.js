@@ -56,7 +56,7 @@ ngModule('about', [])
 		}]);
 
 // bootstrapping the application this way avoids clutting up the
-// home page with 'ngapp=hrapp'	
+// home page with 'ngapp=hrapp'
 angular.element(document).ready(function () {
 	angular.bootstrap(document, ['hrApp']);
 });

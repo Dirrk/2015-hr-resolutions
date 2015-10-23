@@ -24,8 +24,8 @@ ngModule('home', [])
 	            bindToController: true,
 	            controller: 'homePageController',
 	            controllerAs: 'homePageCtrl',
-	            template: '<div><p>{{homePageCtrl.name}}</p></div>',
-	            replace: true,
+                templateUrl: '../templates/home.html',
+                replace: true,
 	            scope: {
 
 	            }
@@ -46,7 +46,7 @@ ngModule('about', [])
             bindToController: true,
             controller: 'aboutPageController',
             controllerAs: 'aboutPageCtrl',
-            template: '<div><p>{{aboutPageCtrl.title}}</p></div>',
+            templateUrl: '../templates/about.html',
             replace: true,
             scope: {
 

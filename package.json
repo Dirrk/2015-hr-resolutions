@@ -4,10 +4,14 @@
   "description": "2015 DE Hampton Roads Resolutions app",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "npm test"
   },
   "dependencies": {
     "hapi": "8.x.x"
+  },
+  "engines": {
+	"node": "0.10.x"
   },
   "author": "Homes.com",
   "license": "MIT"
