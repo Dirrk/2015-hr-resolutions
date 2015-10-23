@@ -10,6 +10,9 @@
   "dependencies": {
     "hapi": "8.x.x"
   },
+  "engines": {
+	"node": "0.10.x"
+  },
   "author": "Homes.com",
   "license": "MIT"
 }
