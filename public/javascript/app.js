@@ -16,22 +16,56 @@ ngModule('globalNav', [])
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: '../views/global-nav.html'
+            templateUrl: '../views/global-nav.html',
+            controller: 'globalNavController',
+            controllerAs: 'globalNavCtrl',
+            bindToController: {
+                searchText: '@'
+            },
+            scope: {}
+
         }
-    });
+    })
+    .controller('globalNavController', [
+        '$scope', 'entryService', function ($scope, entryService) {
+            var self = this;
+            self.runSearch = function (text) {
+            console.log('yay text');
+                entryService.searchCall(text);
+            }
+        }
+    ]);
 
 // THIS IS A SERVICE. RETURN THINGS HERE
-ngModule.service('entryService', ['$http', function ($http) {
-    var service = this;
-    $http({
-        method: 'GET',
-        url: 'http://hack4hr2015.herokuapp.com/api/events'
-    }).then(function (response) {
-        return response.data.resp.doc;
-    }, function (error) {
-        console.log(error);
-    });
-}]);
+app.service('entryService', [
+    '$http', function ($http) {
+        var service = this,
+            req,
+            text;
+
+        req = {
+            method: 'GET',
+            url: 'http://hack4hr2015.herokuapp.com/api/events/id/0e202308-779f-481e-a52f-9902db214274',
+            data: {location: text}
+        };
+        service.get = function () {
+            return $http(req).then(function (response) {
+                text = response.data.resp.doc;
+                return text;
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+
+        service.searchCall = function (text) {
+            request = text;
+            console.log('hey the search was called ' + text);
+
+        };
+        console.log(service.searchCall());
+    }
+]);
 
 // END THE SERVICE
 
@@ -118,7 +152,8 @@ ngModule('events', [])
         function ($scope) {
             var self = this;
 
-        }]);
+        }
+    ]);
 
 ngModule('donate', [])
     .directive('donatePage', function () {
@@ -152,13 +187,15 @@ ngModule('myAccount', [])
         }
     ]);
 
-app.config(function($stateProvider, $urlRouterProvider) {
+// bootstrapping the application this way avoids clutting up the
+// home page with 'ngapp=hrapp'
+app.config(function ($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/");
     $stateProvider
         .state('root', {
             url: '/',
-            templateUrl: '/views/index.html',
+            templateUrl: '/views/home.html',
             controller: 'homePageController'
         })
         .state('about', {

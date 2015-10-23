@@ -27,9 +27,9 @@
         </ul>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
