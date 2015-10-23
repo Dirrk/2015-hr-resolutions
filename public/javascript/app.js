@@ -9,7 +9,7 @@ var app = ngModule('hrApp', [
     'events',
     'globalNav',
     'ui.router',
-    'geoLocation'
+    'geolocation'
 ]);
 
 ngModule('globalNav', [])
@@ -39,7 +39,7 @@ ngModule('globalNav', [])
 
 // THIS IS A SERVICE. RETURN THINGS HERE
 app.service('entryService', [
-    '$http', 'geoLocation', function ($http, geoLocation) {
+    '$http', 'geolocation', function ($http, geoLocation) {
         'use strict';
         var service = this;
 
@@ -53,6 +53,7 @@ app.service('entryService', [
             options.params.lon = service.location_info.lon;
             return $http.get('/api/events/location', options)
                 .then(function (response) {
+                    console.log(response);
                     return response;
             }, function (error) {
                 console.log(error);
