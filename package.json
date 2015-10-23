@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "hapi": "8.x.x",
-    "hoek-boom": "1.x.x"
+    "hoek-boom": "1.x.x",
+    "elasticsearch": "8.x.x",
+    "bluebird": "2.x.x"
   },
   "engines": {
 	"node": "0.10.x"

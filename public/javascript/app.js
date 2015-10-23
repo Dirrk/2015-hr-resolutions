@@ -39,7 +39,7 @@ ngModule('home', [])
 
             $http({
                 method: 'GET',
-                url: 'http://hack4hr2015.herokuapp.com/api/events'
+                url: 'http://hack4hr2015.herokuapp.com/api/events/'
             }).then(function (response) {
                 console.log(response);
             }, function (error) {
