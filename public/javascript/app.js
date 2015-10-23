@@ -21,17 +21,17 @@ ngModule('globalNav', [])
     });
 
 ngModule('home', [])
-    .directive('homePage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'homePageController',
-            controllerAs: 'homePageCtrl',
-            template: '<div><p>{{homePageCtrl.name}}</p></div>',
-            replace: true,
-            scope: {}
-        }
-    })
+    //.directive('homePage', function () {
+    //    return {
+    //        restrict: 'E',
+    //        bindToController: true,
+    //        controller: 'homePageController',
+    //        controllerAs: 'homePageCtrl',
+    //        templateUrl: '../views/home.html',
+    //        replace: true,
+    //        scope: {}
+    //    }
+    //})
     .controller('homePageController', [
         '$http',
         '$scope',
@@ -56,18 +56,18 @@ ngModule('home', [])
     ]);
 
 ngModule('about', [])
-    .directive('aboutPage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'aboutPageController',
-            controllerAs: 'aboutPageCtrl',
-            template: '<div><p>{{aboutPageCtrl.title}}</p></div>',
-            replace: true,
-            scope: {}
-
-        }
-    })
+    //.directive('aboutPage', function () {
+    //    return {
+    //        restrict: 'E',
+    //        bindToController: true,
+    //        controller: 'aboutPageController',
+    //        controllerAs: 'aboutPageCtrl',
+    //        template: '<div><p>{{aboutPageCtrl.title}}</p></div>',
+    //        replace: true,
+    //        scope: {}
+    //
+    //    }
+    //})
     .controller('aboutPageController', [
         '$scope',
         function ($scope) {
@@ -78,18 +78,18 @@ ngModule('about', [])
     ]);
 
 ngModule('events', [])
-    .directive('eventsPate', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'eventsPageController',
-            controllerAs: 'eventsPageCtrl',
-            template: '<div><p>{{eventsPageCtrl.title}}</p></div>',
-            replace: true,
-            scope: {}
-
-        }
-    })
+    //.directive('eventsPate', function () {
+    //    return {
+    //        restrict: 'E',
+    //        bindToController: true,
+    //        controller: 'eventsPageController',
+    //        controllerAs: 'eventsPageCtrl',
+    //        template: '<div><p>{{eventsPageCtrl.title}}</p></div>',
+    //        replace: true,
+    //        scope: {}
+    //
+    //    }
+    //})
     .controller('eventsPageController', [
         '$scope',
         function ($scope) {
@@ -100,18 +100,18 @@ ngModule('events', [])
     ]);
 
 ngModule('donate', [])
-    .directive('donatePage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'donatePageController',
-            controllerAs: 'donatePageCtrl',
-            template: '<div><p>{{donatePageCtrl.title}}</p></div>',
-            replace: true,
-            scope: {}
-
-        }
-    })
+    //.directive('donatePage', function () {
+    //    return {
+    //        restrict: 'E',
+    //        bindToController: true,
+    //        controller: 'donatePageController',
+    //        controllerAs: 'donatePageCtrl',
+    //        template: '<div><p>{{donatePageCtrl.title}}</p></div>',
+    //        replace: true,
+    //        scope: {}
+    //
+    //    }
+    //})
     .controller('donatePageController', [
         '$scope',
         function ($scope) {
@@ -121,8 +121,6 @@ ngModule('donate', [])
         }
     ]);
 
-// bootstrapping the application this way avoids clutting up the
-// home page with 'ngapp=hrapp'
 app.config(function($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/");
@@ -150,6 +148,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 
 });
+
+// bootstrapping the application this way avoids clutting up the
+// home page with 'ngapp=hrapp'
 angular.element(document).ready(function () {
     angular.bootstrap(document, ['hrApp']);
 });
