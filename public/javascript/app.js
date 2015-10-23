@@ -125,27 +125,27 @@ ngModule('donate', [])
 // home page with 'ngapp=hrapp'
 app.config(function($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
-    //$urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/");
     $stateProvider
         .state('root', {
             url: '/',
-            templateUrl: '../views/home.html',
+            templateUrl: '/views/home.html',
             controller: 'homePageController'
         })
         .state('about', {
             url: '/about',
-            templateUrl: '../views/about.html',
+            templateUrl: '/views/about.html',
             controller: 'aboutPageController'
         })
         .state('donate', {
             url: '/donate',
-            templateUrl: '../views/donate.html',
+            templateUrl: '/views/donate.html',
             controller: 'donatePageController'
         })
         .state('events', {
             url: '/events',
-            templateUrl: '',
-            controller: ''
+            templateUrl: '/views/events.html',
+            controller: 'eventsPageController'
         });
 
 
