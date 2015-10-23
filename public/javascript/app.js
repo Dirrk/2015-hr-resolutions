@@ -28,17 +28,17 @@ ngModule('globalNav', [])
         }
     })
     .controller('globalNavController', [
-        '$scope', 'entryService', function ($scope, entryService) {
+        '$scope', 'eventsService', function ($scope, eventsService) {
             var self = this;
             self.runSearch = function (text) {
             console.log('yay text');
-                entryService.searchCall(text);
+                eventsService.searchCall(text);
             }
         }
     ]);
 
 // THIS IS A SERVICE. RETURN THINGS HERE
-app.service('entryService', [
+app.service('eventsService', [
     '$http', 'geolocation', function ($http, geoLocation) {
         'use strict';
         var service = this;
@@ -75,7 +75,7 @@ app.service('entryService', [
                         service.location_info.lon = data.coords.longitude;
                     })
                     .then(function () {
-                        service.$get(requestOptions);
+                        return service.$get(requestOptions);
                     });
             } else {
                 return service.$get(requestOptions);
@@ -107,17 +107,6 @@ ngModule('home', [])
                 response,
                 d = $q;
             self.name = 'Home Page View';
-
-            response = $http({
-                method: 'GET',
-                url: 'http://hack4hr2015.herokuapp.com/api/events'
-            }).then(function (response) {
-                return response.data.resp.doc;
-            }, function (error) {
-                console.log(error);
-            });
-
-            console.log(response);
         }
     ]);
 
@@ -144,7 +133,7 @@ ngModule('about', [])
     ]);
 
 ngModule('events', [])
-    .directive('eventsPate', function () {
+    .directive('eventsPage', function () {
         return {
             restrict: 'E',
             bindToController: true,
@@ -157,11 +146,24 @@ ngModule('events', [])
         }
     })
     .controller('eventsPageController', [
-        '$scope',
-        function ($scope) {
+        '$scope', 'eventsService',
+        function ($scope, eventsService) {
+            'use strict';
             var self = this;
-            self.title = 'yay wtf';
-            console.log('events page scope');
+            $scope.$watch(function () {
+                return self.events;
+            }, function (data) {
+                console.log('data received', data.status);
+                if (data && data.status && data.status === 200) {
+                    $scope.events = data;
+                    setTimeout($scope.$digest, 0);
+                }
+            });
+            eventsService.searchCall().then(function (data) {
+                self.events = data.data;
+            });
+            self.events = { result: [{description: 'test'}], status: 0};
+            $scope.events = self.events;
         }
     ])
     .controller('eventDetailPageController', [
