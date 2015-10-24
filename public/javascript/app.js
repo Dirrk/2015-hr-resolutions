@@ -198,6 +198,11 @@ ngModule('home', [])
         }
     ]);
 
+ngModule('register', [])
+    .controller('registerPageController', function () {
+       var self = this;
+    });
+
 ngModule('about', [])
     .directive('aboutPage', function () {
         return {
@@ -467,6 +472,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/my-account',
             templateUrl: '/views/my-account.html',
             controller: 'myAccountPageController'
+        })
+        .state('register',  {
+            url: '/register',
+            templateUrl: '/views/register.html',
+            controller: 'registerPageController'
         })
         .state('createEvent', {
             url: '/create/event',
