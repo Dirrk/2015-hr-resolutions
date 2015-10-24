@@ -93,10 +93,7 @@ app.service('eventsService', [
         };
 
         service.signUp = function signUp(id, payload) {
-            $http.post('/api/events/signup/' + id, payload)
-                .then(function (response){
-                    console.log(response);
-            });
+            return $http.post('/api/events/signup/' + id, payload);
         }
     }
 ]);
@@ -298,7 +295,9 @@ ngModule('events', [])
 
             $scope.signUp = function signUp(id, userData) {
                 console.log('signUp', id);
-                eventsService.signUp(id, userData);
+                eventsService.signUp(id, userData).then(function () {
+                    alert('Thanks for signing up');
+                });
             }
         }
     ]);
