@@ -248,7 +248,9 @@ ngModule('events', [])
 
             $scope.runSearch = function (text) {
                 console.log('yay text');
-                eventsService.searchCall(text);
+                eventsService.searchCall(text).then(function (data) {
+                    self.events = data.data;
+                });
             };
 
             eventsService.searchCall().then(function (data) {
