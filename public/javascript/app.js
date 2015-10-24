@@ -156,18 +156,7 @@ app.service('donationService', [
 // END THE SERVICE
 
 ngModule('home', [])
-    .directive('homePage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'homePageController',
-            controllerAs: 'homePageCtrl',
-            template: '<div><p>{{homePageCtrl.name}}</p></div>',
-            replace: true,
-            scope: {}
-        }
-    })
-    .controller('homePageController', [
+     .controller('homePageController', [
         '$http',
         '$scope',
         '$q',
@@ -185,18 +174,6 @@ ngModule('register', [])
     });
 
 ngModule('about', [])
-    .directive('aboutPage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'aboutPageController',
-            controllerAs: 'aboutPageCtrl',
-            template: '<div><p>{{aboutPageCtrl.title}}</p></div>',
-            replace: true,
-            scope: {}
-
-        }
-    })
     .controller('aboutPageController', [
         '$scope',
         function ($scope) {
@@ -207,18 +184,6 @@ ngModule('about', [])
     ]);
 
 ngModule('events', [])
-    .directive('eventsPage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'eventsPageController',
-            controllerAs: 'eventsPageCtrl',
-            template: '<div><p>{{eventsPageCtrl.title}}</p></div>',
-            replace: true,
-            scope: {}
-
-        }
-    })
     .controller('eventsPageController', [
         '$scope', 'eventsService',
         function ($scope, eventsService) {
@@ -266,17 +231,6 @@ ngModule('events', [])
     ]);
 
 ngModule('donate', [])
-    .directive('donatePage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'donatePageController',
-            controllerAs: 'donatePageCtrl',
-            replace: true,
-            scope: {}
-
-        }
-    })
     .controller('donateCategoryPageController', [
         '$scope',
         '$stateParams',
@@ -385,7 +339,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/event-detail.html',
             controller: 'eventDetailPageController'
         })
-        .state('my-account', {
+        .state('myAccount', {
             url: '/my-account',
             templateUrl: '/views/my-account.html',
             controller: 'myAccountPageController'

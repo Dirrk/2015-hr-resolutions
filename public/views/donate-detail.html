@@ -1,5 +1,16 @@
-<div class="container">
+<div class="container inside donate-page">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">Donate Details</div>
+        <div class="navigation">
+            <data-global-nav></data-global-nav>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 page-content">
+            <form role="search">
+                <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
+                <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
+            </form>
+
+            <h1>Donate Details</h1>
+
+        </div>
     </div>
 </div>

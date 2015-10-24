@@ -5,6 +5,7 @@ $darkerBlue: #2e6cb5;
 $darkYellow: #e9d518;
 $lightYellow: #fff100;
 $grey: #404041;
+$black: #000;
 
 // Font sizes
 $font-size-small: 10px;
@@ -18,3 +19,22 @@ $font-size-4xlarge: 24px;
 $font-size-5xlarge: 26px;
 $font-size-6xlarge: 28px;
 $font-size-7xlarge: 30px;
+
+// Tools
+@mixin clearfix ($both: true) {
+	@if $both {
+		&::before,
+		&::after {
+			content: "";	
+			display: table;
+			clear:both;
+		}
+	} 
+	@else {
+		&::after{
+			content: "";	
+			display: table;
+			clear:both;
+		}
+	}
+}
