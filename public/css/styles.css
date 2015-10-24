@@ -3,20 +3,24 @@ body {
   font-size: 12px; }
 
 h1 {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  color: #e9d518;
+  font-weight: 800;
+  margin: 10px auto;
+  display: table; }
 
 form[role="search"] {
   margin-top: 20px; }
 
 .col-xs-5, .col-sm-5, .col-md-5 {
-  width: 47%; }
+  width: 48%; }
 
 .navbar-default, .logo {
   position: fixed;
   z-index: 10; }
 
 .navigation {
-  height: 50px;
+  height: 55px;
   background-color: #009FCF;
   position: fixed;
   z-index: 5;
@@ -33,9 +37,16 @@ form[role="search"] {
     z-index: 5;
     background-color: #fff;
     border-bottom: 1px solid #009FCF; }
+  .navigation .navbar-brand {
+    padding: 8px 10px; }
 
 .page-content {
   margin-top: 50px; }
+  .page-content .form-control {
+    width: 80%;
+    display: inline; }
+    .page-content .form-control + .btn {
+      margin-top: -5px; }
 
 .logo {
   background-color: #009FCF;
@@ -103,14 +114,6 @@ form[role="search"] {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: 0 -15px; }
-    .event-listings li.adopt-a-highway {
-      background-image: url("/img/AdoptAHighway.jpg"); }
-    .event-listings li.car-wash {
-      background-image: url("/img/Car_wash.jpg"); }
-    .event-listings li.food-drive {
-      background-image: url("/img/Food_Drive.jpg"); }
-    .event-listings li.run-volunteer {
-      background-image: url("/img/Run_Volunteer.jpg"); }
     .event-listings li.odd-listing {
       background-color: #009FCF; }
       .event-listings li.odd-listing .event-details {
@@ -121,6 +124,8 @@ form[role="search"] {
         color: #2e6cb5; }
     .event-listings li img {
       max-width: 100%; }
+    .event-listings li .event-title {
+      line-height: 1.2em; }
     .event-listings li .event-details {
       font-size: 18px;
       position: absolute;
@@ -138,7 +143,7 @@ form[role="search"] {
 .footer {
   background-color: #e9d518;
   text-transform: uppercase;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   padding: 8px 8px 8px 8px;
   width: 320px;
@@ -149,5 +154,34 @@ form[role="search"] {
   transform: translateX(-50%); }
   .footer img {
     margin: -5px 5px 0 0; }
+
+@media screen and (min-width: 480px) {
+  .page-content .form-control {
+    width: 80%; }
+
+  .navbar-default .navbar-nav > li > a {
+    color: #fff; }
+
+  .inside .row {
+    margin-left: -47px; }
+
+  .navigation {
+    margin: 0;
+    width: 100%; }
+    .navigation .navbar-default {
+      background-color: transparent; }
+      .navigation .navbar-default .navbar-toggle {
+        background-color: transparent; }
+    .navigation .navbar-collapse {
+      float: right;
+      background-color: transparent; }
+      .navigation .navbar-collapse a {
+        color: #2e6cb5; } }
+@media screen and (max-width: 320px) {
+  .page-content .form-control {
+    width: 76%; }
+
+  .event-listings li {
+    font-size: 24px; } }
 
 /*# sourceMappingURL=styles.css.map */
