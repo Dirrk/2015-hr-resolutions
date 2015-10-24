@@ -279,11 +279,10 @@ ngModule('donate', [])
             console.log($stateParams);
 
             var self = this;
-
+                self.category = $stateParams.category;
             $scope.$watch(function () {
                 return self.donations;
             }, function (data) {
-                console.log('data received', data.status);
                 if (data && data.status && data.status === 200) {
                     $scope.donations = data;
                     setTimeout($scope.$digest, 0);
@@ -292,7 +291,6 @@ ngModule('donate', [])
             donationService.searchCall().then(function (data) {
                 self.donations = data.data;
             });
-            self.donations = {result: [{name: 'test'}], status: 0};
             $scope.donations = self.donations;
 
         }
