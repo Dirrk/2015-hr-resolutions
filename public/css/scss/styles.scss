@@ -367,7 +367,79 @@ form[role="search"] {
 	}
 }
 
+.my-account {
+	.my-account--info {
+		@include clearfix();
+		margin-bottom: 20px;
 
+		.my-account--image, .my-account--details {
+			float: left;
+			vertical-align: top;
+			padding: 0;
+		}
+		
+		.my-account--image {
+			margin-right: 10px;
+		}
+
+		.my-account--details {
+			font-size: $font-size-xlarge;
+
+			h3 {
+				font-size: $font-size-6xlarge;
+				color: $darkerBlue;
+				margin: 0;
+			}	
+		}
+	}
+
+	.my-account--reward-total {
+		font-size: $font-size-xlarge;
+		color: $darkerBlue;
+		text-align: center;
+
+		img {
+			margin-top: 10px;
+		}
+	}
+
+	.my-account-section {
+		background-color: $darkerBlue;
+		color: $white;
+		font-size: $font-size-large;
+		padding: 8px;
+	}
+
+	.event-listings {
+		@include clearfix();
+
+		li {
+			width: 100px;
+			max-height: 100px;
+			min-height: 100px;
+			background-color: $blue;
+			font-size: $font-size-medium;
+			float: left;
+			text-align: center;
+			
+			.event-title {
+				font-weight: 400;
+			}
+
+			.event-details {
+				color: $white;
+				font-size: $font-size-default;
+				bottom: 10px;
+			}
+		}
+	}
+
+	button.log-out {
+		width: 100%;
+	}
+}
+
+// media queries for smaller mobiles, etc
 @media screen and (min-width: 480px) {
 	.page-content {
 		.form-control {
