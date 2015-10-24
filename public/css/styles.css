@@ -271,6 +271,56 @@ form[role="search"] {
     display: table;
     clear: both; }
 
+.my-account .my-account--info {
+  margin-bottom: 20px; }
+  .my-account .my-account--info::before, .my-account .my-account--info::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .my-account .my-account--info .my-account--image, .my-account .my-account--info .my-account--details {
+    float: left;
+    vertical-align: top;
+    padding: 0; }
+  .my-account .my-account--info .my-account--image {
+    margin-right: 10px; }
+  .my-account .my-account--info .my-account--details {
+    font-size: 18px; }
+    .my-account .my-account--info .my-account--details h3 {
+      font-size: 28px;
+      color: #2e6cb5;
+      margin: 0; }
+.my-account .my-account--reward-total {
+  font-size: 18px;
+  color: #2e6cb5;
+  text-align: center; }
+  .my-account .my-account--reward-total img {
+    margin-top: 10px; }
+.my-account .my-account-section {
+  background-color: #2e6cb5;
+  color: #fff;
+  font-size: 16px;
+  padding: 8px; }
+.my-account .event-listings::before, .my-account .event-listings::after {
+  content: "";
+  display: table;
+  clear: both; }
+.my-account .event-listings li {
+  width: 100px;
+  max-height: 100px;
+  min-height: 100px;
+  background-color: #009FCF;
+  font-size: 14px;
+  float: left;
+  text-align: center; }
+  .my-account .event-listings li .event-title {
+    font-weight: 400; }
+  .my-account .event-listings li .event-details {
+    color: #fff;
+    font-size: 12px;
+    bottom: 10px; }
+.my-account button.log-out {
+  width: 100%; }
+
 @media screen and (min-width: 480px) {
   .page-content .form-control {
     width: 80%; }
