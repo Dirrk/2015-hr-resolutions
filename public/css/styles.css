@@ -173,19 +173,42 @@ form[role="search"] {
         clear: both; }
 
 .footer {
-  background-color: #e9d518;
   text-transform: uppercase;
   position: fixed;
   bottom: 0;
-  padding: 8px 8px 8px 8px;
-  width: 320px;
+  width: 100%;
   text-align: center;
-  font-weight: 800;
-  color: #2e6cb5;
-  left: 50%;
-  transform: translateX(-50%); }
+  -moz-box-shadow: inset black 0 -1px;
+  -webkit-box-shadow: inset black 0 -1px;
+  box-shadow: inset black 0 -1px; }
+  .footer button {
+    font-weight: 400;
+    font-size: 14px;
+    color: #fff;
+    background-color: #2e6cb5;
+    width: 33%;
+    float: left;
+    border: 0;
+    border-right: 1px solid #2a79c1;
+    -moz-box-shadow: inset -1px 0 0 black;
+    -webkit-box-shadow: inset -1px 0 0 black;
+    box-shadow: inset -1px 0 0 black;
+    text-align: center;
+    vertical-align: middle;
+    height: 50px;
+    text-transform: uppercase;
+    outline: 0; }
+    .footer button:nth-of-type(2) {
+      width: 34%; }
+    .footer button:last-of-type {
+      border-width: 0;
+      box-shadow: inset 0 0 0; }
   .footer img {
     margin: -5px 5px 0 0; }
+  .footer:after {
+    content: '';
+    display: table;
+    clear: both; }
 
 @media screen and (min-width: 480px) {
   .page-content .form-control {
