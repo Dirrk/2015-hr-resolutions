@@ -179,6 +179,11 @@ ngModule('home', [])
         }
     ]);
 
+ngModule('register', [])
+    .controller('registerPageController', function () {
+       var self = this;
+    });
+
 ngModule('about', [])
     .directive('aboutPage', function () {
         return {
@@ -354,6 +359,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/about',
             templateUrl: '/views/about.html',
             controller: 'aboutPageController'
+        })
+        .state('register',  {
+            url: '/register',
+            templateUrl: '/views/register.html',
+            controller: 'registerPageController'
         })
         .state('donate', {
             url: '/donate',
