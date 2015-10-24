@@ -1,9 +1,18 @@
-<div class="container">
-<data-global-nav></data-global-nav>
+<div class="container inside donate-page">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">Donate</div>
-        <ul ng-repeat="donate in donations.result">
+        <div class="navigation">
+            <data-global-nav></data-global-nav>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 page-content">
+            <form role="search">
+                <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
+                <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
+            </form>
+
+            <h1>Donate List</h1>
+            <ul ng-repeat="donate in donations.result">
                 <li>{{donate.name}} {{donate.city}} {{donate.date}} {{donate.time}}</li>
-        </ul>
+            </ul>
+        </div>
     </div>
 </div>

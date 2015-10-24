@@ -167,18 +167,7 @@ app.service('donationService', [
 // END THE SERVICE
 
 ngModule('home', [])
-    .directive('homePage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'homePageController',
-            controllerAs: 'homePageCtrl',
-            template: '<div><p>{{homePageCtrl.name}}</p></div>',
-            replace: true,
-            scope: {}
-        }
-    })
-    .controller('homePageController', [
+     .controller('homePageController', [
         '$http',
         '$scope',
         '$q',
@@ -190,19 +179,12 @@ ngModule('home', [])
         }
     ]);
 
-ngModule('about', [])
-    .directive('aboutPage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'aboutPageController',
-            controllerAs: 'aboutPageCtrl',
-            template: '<div><p>{{aboutPageCtrl.title}}</p></div>',
-            replace: true,
-            scope: {}
+ngModule('register', [])
+    .controller('registerPageController', function () {
+       var self = this;
+    });
 
-        }
-    })
+ngModule('about', [])
     .controller('aboutPageController', [
         '$scope',
         function ($scope) {
@@ -213,18 +195,6 @@ ngModule('about', [])
     ]);
 
 ngModule('events', [])
-    .directive('eventsPage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'eventsPageController',
-            controllerAs: 'eventsPageCtrl',
-            template: '<div><p>{{eventsPageCtrl.title}}</p></div>',
-            replace: true,
-            scope: {}
-
-        }
-    })
     .controller('eventsPageController', [
         '$scope', 'eventsService',
         function ($scope, eventsService) {
@@ -272,17 +242,6 @@ ngModule('events', [])
     ]);
 
 ngModule('donate', [])
-    .directive('donatePage', function () {
-        return {
-            restrict: 'E',
-            bindToController: true,
-            controller: 'donatePageController',
-            controllerAs: 'donatePageCtrl',
-            replace: true,
-            scope: {}
-
-        }
-    })
     .controller('donateCategoryPageController', [
         '$scope',
         '$stateParams',
@@ -292,6 +251,8 @@ ngModule('donate', [])
 
             var self = this;
                 self.category = $stateParams.category;
+            console.log(self.category);
+            $scope.category = self.category;
             $scope.$watch(function () {
                 return self.donations;
             }, function (data) {
@@ -397,6 +358,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/about.html',
             controller: 'aboutPageController'
         })
+        .state('register',  {
+            url: '/register',
+            templateUrl: '/views/register.html',
+            controller: 'registerPageController'
+        })
         .state('donate', {
             url: '/donate',
             templateUrl: '/views/donate.html',
@@ -417,7 +383,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/event-detail.html',
             controller: 'eventDetailPageController'
         })
-        .state('my-account', {
+        .state('myAccount', {
             url: '/my-account',
             templateUrl: '/views/my-account.html',
             controller: 'myAccountPageController'
