@@ -22,14 +22,12 @@
 
             <h3>Sign Up For This Event</h3>
             <form class="sign-up-now-form">
-                <p><input type="text" placeholder="Name:" id="register-name"></p>
-                <p><input type="email" placeholder="Email:" id="register-email"></p>
-                <p><input type="tel" placeholder="Phone number:" id="register-phone"></p>
-                <p><button type="submit" id="submit" value="Submit" class="btn btn-primary">CREAT ACCOUNT</button></p>
+                <p><input type="text" placeholder="Name:" data-ng-model="eventDetailPageController.input.name"></p>
+                <p><input type="email" placeholder="Email:" data-ng-model="eventDetailPageController.input.email"></p>
+                <p><input type="tel" placeholder="Phone number:" data-ng-model="eventDetailPageController.input.phone"></p>
+                <!-- signUp -->
+                <p><button type="submit" data-ng-click="signUp(event.id, eventDetailPageController.input)" class="btn btn-primary">Submit</button></p>
             </form>
         </div>
     </div>
 </div>
-
-
-
