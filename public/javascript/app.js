@@ -222,10 +222,11 @@ ngModule('events', [])
         }
     ])
     .controller('eventDetailPageController', [
-        '$scope', 'eventsService', '$stateParams',
-        function ($scope, eventsService, $stateParams) {
+        '$scope', 'eventsService', '$stateParams', '$sce',
+        function ($scope, eventsService, $stateParams, $sce) {
             'use strict';
             var self = this;
+
 
             console.log($stateParams);
 
@@ -235,14 +236,24 @@ ngModule('events', [])
                 console.log('data received', data);
                 if (data) {
                     $scope.event = data.resp;
+                    $scope.mapUrl = $scope.event.map_url;
+                    console.log($scope.mapUrl[1]);
                     setTimeout($scope.$digest, 0);
                 }
             });
             eventsService.get($stateParams.id).then(function (data) {
                 self.event = data.data;
             });
-            self.event = undefined;
+            $scope.trustSrc = function(src) {
+                console.log(src);
+                return $sce.trustAsResourceUrl(src);
+            };
+
+
+            //self.event = undefined;
+            console.log(self.mapUrl);
             $scope.event = self.event;
+            //self.event.map_url = $sce.trustAsResourceUrl(self.event.map_url);
         }
     ]);
 
@@ -349,7 +360,11 @@ ngModule('createEvent', [])
 
 // bootstrapping the application this way avoids clutting up the
 // home page with 'ngapp=hrapp'
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'self',
+        'http://maps.google.com/maps/**'
+    ]);
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/");
     $stateProvider

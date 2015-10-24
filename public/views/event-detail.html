@@ -8,11 +8,6 @@
             <h1>{{event.name}}</h1>
             <p>{{event.description}}</p>
 
-
-            <h3>Where?</h3>
-            <p>{{event.where.address}},<br>
-                {{event.where.location}}</p>
-            <iframe src="https://maps.google.com/maps?q=409 Byron St Chesapeake, VA 23320&hl=es;z=17&amp;output=embed" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
             <h3>When?</h3>
             <p>{{event.when}}</p>
             <h3>Who?</h3>
@@ -25,8 +20,15 @@
                 <p><input type="text" placeholder="Name:" id="register-name"></p>
                 <p><input type="email" placeholder="Email:" id="register-email"></p>
                 <p><input type="tel" placeholder="Phone number:" id="register-phone"></p>
-                <p><button type="submit" id="submit" value="Submit" class="btn btn-primary">CREAT ACCOUNT</button></p>
+                <p><button type="submit" id="submit" value="Submit" class="btn btn-primary">CREATE ACCOUNT</button></p>
             </form>
+
+            <h3>Where?</h3>
+            <p>{{event.where.address}},<br>
+                {{event.where.location}}</p>
+
+            <iframe id="map" ng-src="{{trustSrc(mapUrl)}}" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <p>{{mapUrl}}</p>
         </div>
     </div>
 </div>
