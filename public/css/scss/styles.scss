@@ -70,6 +70,40 @@ form[role="search"] {
 	}
 }
 
+
+.donateItem {
+    background: black;
+    height: 160px;
+    width: 47%;
+    margin: 4px;
+}
+.donate-clothes {
+  background-image: url('/img/ShirtIcon.png');
+  background-size: contain;
+  background-color: $blue;
+  background-repeat: no-repeat;
+}
+
+.donate-blood {
+  background-image: url('/img/BloodIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: $darkYellow;
+}
+
+.donate-money {
+  background-image: url('/img/DollarIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: $blue;
+}
+
+.donate-food {
+  background-image: url('/img/AppleIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: $darkYellow;
+}
 .logo {
 	background-color: $blue;
 	box-sizing: border-box;

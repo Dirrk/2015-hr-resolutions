@@ -2,22 +2,84 @@ body {
   font-family: 'Dosis', sans-serif;
   font-size: 12px; }
 
+h1 {
+  text-transform: uppercase;
+  color: #e9d518;
+  font-weight: 800;
+  margin: 10px auto;
+  display: table; }
+
+form[role="search"] {
+  margin-top: 20px; }
+
+.col-xs-5, .col-sm-5, .col-md-5 {
+  width: 48%; }
+
 .navbar-default, .logo {
   position: fixed;
   z-index: 10; }
 
-.navbar-default {
-  margin: 0;
+.navigation {
+  height: 55px;
+  background-color: #009fcf;
   position: fixed;
-  box-sizing: border-box;
-  width: 100%;
-  background-color: transparent;
-  border-width: 0; }
-  .navbar-default .navbar-toggle {
-    background-color: #fff; }
+  z-index: 5;
+  width: 100%; }
+  .navigation .navbar-default {
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: transparent;
+    border-width: 0; }
+    .navigation .navbar-default .navbar-toggle {
+      background-color: #fff; }
+  .navigation .navbar-collapse {
+    z-index: 5;
+    background-color: white;
+    border-bottom: 1px solid #009fcf; }
+  .navigation .navbar-brand {
+    padding: 8px 10px; }
+
+.page-content {
+  margin-top: 50px; }
+  .page-content .form-control {
+    width: 80%;
+    display: inline; }
+    .page-content .form-control + .btn {
+      margin-top: -5px; }
+
+.donateItem {
+  background: black;
+  height: 160px;
+  width: 47%;
+  margin: 4px; }
+
+.donate-clothes {
+  background-image: url("/img/ShirtIcon.png");
+  background-size: contain;
+  background-color: #009fcf;
+  background-repeat: no-repeat; }
+
+.donate-blood {
+  background-image: url("/img/BloodIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #e9d518; }
+
+.donate-money {
+  background-image: url("/img/DollarIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #009fcf; }
+
+.donate-food {
+  background-image: url("/img/AppleIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #e9d518; }
 
 .logo {
-  background-color: #009FCF;
+  background-color: #009fcf;
   box-sizing: border-box;
   margin: 0 auto;
   left: 50%;
@@ -31,9 +93,12 @@ body {
     font-weight: 800;
     letter-spacing: 1px;
     text-align: center; }
-
-.container.inside {
-  margin-top: 50px; }
+  .navigation .logo img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 7px;
+    margin: 0; }
 
 .home-donate {
   background-image: url("/img/LandingPage_left.png"); }
@@ -62,17 +127,89 @@ body {
     padding-left: 50px;
     padding-right: 50px; }
 
+.event-listings {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  margin: 0 10px 8px 10px; }
+  .event-listings li {
+    padding: 10px;
+    margin: 0 5px 5px 0;
+    min-height: 180px;
+    font-size: 30px;
+    font-weight: 800;
+    color: #e9d518;
+    position: relative; }
+    .event-listings li.adopt-a-highway, .event-listings li.car-wash, .event-listings li.food-drive, .event-listings li.run-volunteer {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 0 -15px; }
+    .event-listings li.odd-listing {
+      background-color: #009fcf; }
+      .event-listings li.odd-listing .event-details {
+        color: #fff100; }
+    .event-listings li.even-listing {
+      background-color: #e9d518; }
+      .event-listings li.even-listing .event-details {
+        color: #2e6cb5; }
+    .event-listings li img {
+      max-width: 100%; }
+    .event-listings li .event-title {
+      line-height: 1.2em; }
+    .event-listings li .event-details {
+      font-size: 18px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 5px;
+      font-weight: 400;
+      text-align: center;
+      width: 100%; }
+      .event-listings li .event-details:before {
+        content: '';
+        display: table;
+        clear: both; }
+
 .footer {
   background-color: #e9d518;
   text-transform: uppercase;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   padding: 8px 8px 8px 8px;
-  width: 300px;
+  width: 320px;
   text-align: center;
   font-weight: 800;
-  color: #2e6cb5; }
+  color: #2e6cb5;
+  left: 50%;
+  transform: translateX(-50%); }
   .footer img {
     margin: -5px 5px 0 0; }
 
-/*# sourceMappingURL=styles.css.map */
+@media screen and (min-width: 480px) {
+  .page-content .form-control {
+    width: 80%; }
+
+  .navbar-default .navbar-nav > li > a {
+    color: white; }
+
+  .inside .row {
+    margin-left: -47px; }
+
+  .navigation {
+    margin: 0;
+    width: 100%; }
+    .navigation .navbar-default {
+      background-color: transparent; }
+      .navigation .navbar-default .navbar-toggle {
+        background-color: transparent; }
+    .navigation .navbar-collapse {
+      float: right;
+      background-color: transparent; }
+      .navigation .navbar-collapse a {
+        color: #2e6cb5; } }
+@media screen and (max-width: 320px) {
+  .page-content .form-control {
+    width: 76%; }
+
+  .event-listings li {
+    font-size: 24px; } }

@@ -48,6 +48,36 @@ form[role="search"] {
     .page-content .form-control + .btn {
       margin-top: -5px; }
 
+.donateItem {
+  background: black;
+  height: 160px;
+  width: 47%;
+  margin: 4px; }
+
+.donate-clothes {
+  background-image: url("/img/ShirtIcon.png");
+  background-size: contain;
+  background-color: #009FCF;
+  background-repeat: no-repeat; }
+
+.donate-blood {
+  background-image: url("/img/BloodIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #e9d518; }
+
+.donate-money {
+  background-image: url("/img/DollarIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #009FCF; }
+
+.donate-food {
+  background-image: url("/img/AppleIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #e9d518; }
+
 .logo {
   background-color: #009FCF;
   box-sizing: border-box;
