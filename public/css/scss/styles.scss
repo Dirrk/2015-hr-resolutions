@@ -15,12 +15,15 @@ body {
 	height: 50px;
 }
 
+.navigation {
+  margin-top: 50px;
+}
 .navbar-default {
 	margin: 0;
 	position: fixed;
 	box-sizing: border-box;
 	width: 100%;
-	background-color: transparent;
+	background-color: black;
 	border-width: 0;
 
 	.navbar-toggle {
@@ -30,6 +33,40 @@ body {
 	.inside & {
 		margin: 0 0 0 -15px;
 	}
+}
+
+.donateItem {
+    background: black;
+    height: 160px;
+    width: 47%;
+    margin: 4px;
+}
+.donate-clothes {
+  background-image: url('/img/ShirtIcon.png');
+  background-size: contain;
+  background-color: $blue;
+  background-repeat: no-repeat;
+}
+
+.donate-blood {
+  background-image: url('/img/BloodIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: $darkYellow;
+}
+
+.donate-money {
+  background-image: url('/img/DollarIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: $blue;
+}
+
+.donate-food {
+  background-image: url('/img/AppleIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: $darkYellow;
 }
 .logo {
 	background-color: $blue;
@@ -48,6 +85,12 @@ body {
 		font-weight: 800;
 		letter-spacing: 1px;
 		text-align: center;
+	}
+}
+
+.container {
+	&.inside {
+		margin-top: 50px;
 	}
 }
 

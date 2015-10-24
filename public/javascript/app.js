@@ -271,7 +271,13 @@ ngModule('donate', [])
 
         }
     })
-    .controller('donateCategory', [
+    .controller('donateCategoryPageController', [
+        '$stateParams',
+        function ($stateParams) {
+            console.log($stateParams);
+        }
+    ])
+    .controller('donatePageController', [
         '$scope',
         '$stateParams',
         function ($scope, $stateParams) {
@@ -332,7 +338,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'donatePageController'
         })
         .state('donateCategory', {
-            url: 'donate/:category',
+            url: '/donate/:category',
             template: '/views/donate-category.html',
             controller: 'donateCategoryPageController'
         })
