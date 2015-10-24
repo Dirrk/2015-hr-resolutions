@@ -5,6 +5,18 @@ body {
 	font-size: $font-size-default;
 }
 
+h1 {
+	text-transform: uppercase;
+}
+
+form[role="search"] {
+	margin-top: 20px;
+}
+
+.col-xs-5, .col-sm-5, .col-md-5 {
+	width: 47%;
+}
+
 .navbar-default, .logo {
 	position: fixed;
 	z-index: 10;
@@ -13,24 +25,28 @@ body {
 
 .navigation {
 	height: 50px;
-}
-
-.navbar-default {
-	margin: 0;
+	background-color: $blue;
 	position: fixed;
-	box-sizing: border-box;
+	z-index: 5;
 	width: 100%;
-	background-color: transparent;
-	border-width: 0;
 
-	.navbar-toggle {
-		background-color: #fff;
-	}
+	.navbar-default {
+		margin: 0;
+		box-sizing: border-box;
+		width: 100%;
+		background-color: transparent;
+		border-width: 0;
 
-	.inside & {
-		margin: 0 0 0 -15px;
+		.navbar-toggle {
+			background-color: #fff;
+		}
 	}
 }
+
+.page-content {
+	margin-top: 50px;
+}
+
 .logo {
 	background-color: $blue;
 	box-sizing: border-box;
@@ -49,6 +65,17 @@ body {
 		letter-spacing: 1px;
 		text-align: center;
 	}
+
+	.navigation & {
+		// Logos on the inside are smaller and top of the page
+		img {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			top: 7px;
+			margin: 0;
+		}
+	}	
 }
 
 .home-donate {
@@ -81,6 +108,79 @@ body {
 		bottom: 0;
 		padding-left: 50px;
 		padding-right: 50px;
+	}
+}
+
+.event-listings {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+    margin: 0 10px 8px 10px;
+
+
+	li {
+		padding: 10px;
+		margin: 0 5px 5px 0;
+		min-height: 180px;
+		font-size: $font-size-7xlarge;
+		font-weight: 800;
+		color: $darkYellow;
+		position: relative;
+
+		&.adopt-a-highway, &.car-wash, &.food-drive, &.run-volunteer {
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: 0 -15px;
+		}
+
+		&.adopt-a-highway {
+			background-image: url('/img/AdoptAHighway.jpg');
+		}
+		&.car-wash {
+			background-image: url('/img/Car_wash.jpg');
+		}
+		&.food-drive {
+			background-image: url('/img/Food_Drive.jpg');
+		}
+		&.run-volunteer {
+			background-image: url('/img/Run_Volunteer.jpg');
+		}
+
+		&.odd-listing {
+			background-color: $blue;
+
+			.event-details {
+				color: $lightYellow;
+			}
+		}
+		&.even-listing {
+			background-color: $darkYellow;
+			
+			.event-details {
+				color: $darkerBlue;
+			}
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		.event-details {
+			font-size: $font-size-xlarge;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			padding: 5px;
+			font-weight: 400;
+			text-align: center;
+			width: 100%;
+
+			&:before {
+				content: '';
+				display: table;
+				clear: both;
+			}
+		}
 	}
 }
 

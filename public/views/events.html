@@ -3,10 +3,52 @@
         <div class="navigation">
             <data-global-nav></data-global-nav>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <p>Something</p>
-            <ul ng-repeat="event in events.result">
-                <li>{{event.description}}</li>
+        <div class="col-xs-12 col-sm-12 col-md-12 page-content">
+            <form role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
+                </div>
+                <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
+            </form>
+
+            <h1>Events</h1>
+
+            <ul class="event-listings">
+                <li class="col-xs-5 col-sm-5 col-md-5 odd-listing adopt-a-highway">
+                    <span class="event-title">
+                        Adopt a Highway
+                    </span>
+                    <span class="event-details">
+                        Virginia Beach<br>
+                        11/02 11:00am
+                    </span>
+                </li>
+                <li class="col-xs-5 col-sm-5 col-md-5 even-listing car-wash">
+                    Community Car Wash
+                    <span class="event-details">
+                        Portsmouth<br>
+                        11/02 9:00am
+                    </span>
+                </li>
+                <li class="col-xs-5 col-sm-5 col-md-5 odd-listing food-drive">
+                    Food Drive
+                    <span class="event-details">
+                        Norfolk<br>
+                        11/09 8:00am
+                    </span>
+                </li>
+                <li class="col-xs-5 col-sm-5 col-md-5 even-listing run-volunteer">
+                    Run Volunteer
+                    <span class="event-details">
+                        Chesapeake<br>
+                        11/04 7:00am
+                    </span>
+                </li>
+            </ul>
+
+
+            <ul ng-repeat="event in events.result" class="event-listings">
+                <li class="col-xs-6 col-sm-6 col-md-6" ng-class-even="'even-listing'">{{event.description}}</li>
             </ul>
         </div>
     </div>
