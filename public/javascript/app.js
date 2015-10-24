@@ -11,7 +11,7 @@ var app = ngModule('hrApp', [
     'globalNav',
     'ui.router',
     'geolocation',
-    'create'
+    'createEvent'
 ]);
 
 ngModule('globalNav', [])
@@ -96,6 +96,17 @@ app.service('eventsService', [
         };
     }
 ]);
+
+app.service('createEventService', [
+    '$http', function ($http) {
+        'use strict';
+        var service = this;
+
+        service.createEvent = function (event) {
+            console.log(event);
+        }
+    }
+])
 
 // THIS IS A SERVICE. RETURN THINGS HERE
 app.service('donationService', [
@@ -328,12 +339,45 @@ ngModule('myAccount', [])
         }
     ]);
 
-ngModule('create', [])
+ngModule('createEvent', [])
+    .directive('createEventPage', function () {
+        return {
+            restrict: 'E',
+            bindToController: true,
+            controller: 'createController',
+            controllerAs: 'createController',
+            replace: true,
+            scope: {}
+
+        }
+    })
     .controller('createController', [
         '$scope',
-        'createService',
+        'createEventService',
         function ($scope, createService) {
             var self = this;
+            console.log($scope);
+            self.createEvent = function () {
+                console.log('createEvent in controller');
+                var event = {
+                    name: $scope.name,
+                    website: $scope.website,
+                    description: $scope.description,
+                    address: $scope.address,
+                    city: $scope.city,
+                    state: $scope.state,
+                    zip: $scope.zip,
+                    contact_name: $scope.contact_name,
+                    contact_phone: $scope.contact_phone,
+                    contact_email: $scope.contact_email,
+                    volunteers_min: $scope.volunteers_min,
+                    volunteers_max: $scope.volunteers_max,
+                    img: $scope.img,
+                    start_date: $scope.start_date,
+                    end_date: $scope.end_date
+                };
+                createService.createEvent(event);
+            }
         }
     ]);
 
@@ -378,9 +422,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/my-account.html',
             controller: 'myAccountPageController'
         })
-        .state('create', {
-            url: '/create',
-            templateUrl: '/views/create.html',
+        .state('createEvent', {
+            url: '/create/event',
+            templateUrl: '/views/create-event.html',
             controller: 'createController'
         });
 });
