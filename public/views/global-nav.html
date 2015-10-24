@@ -13,8 +13,8 @@
           <span class="icon-bar"></span>
         </button>
           <!-- Add ng-if switch for icon !-->
-        <div class="navbar-brand" ui-sref="donate"><img src="/img/DonateIcon.png"></div>
-        <!--<div class="navbar-brand" ui-sref="events" data-ng-if=""><img src="/img/EventsIcon.png"></div>-->
+         <div data-ng-if="eventsLink" class="navbar-brand" ui-sref="donate"><img src="/img/DonateIcon.png"></div>
+         <div class="navbar-brand" ui-sref="events" data-ng-if="donateLink"><img src="/img/EventsIcon.png"></div>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->

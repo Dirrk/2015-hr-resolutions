@@ -2,6 +2,11 @@
 var a = 'Hello world';
 console.log(a);
 
+var location_info = {
+    lat: 0,
+    lon: 0
+};
+
 var ngModule = angular.module;
 var app = ngModule('hrApp', [
     'home',
@@ -11,7 +16,8 @@ var app = ngModule('hrApp', [
     'globalNav',
     'ui.router',
     'geolocation',
-    'createEvent'
+    'createEvent',
+    'register'
 ]);
 
 ngModule('globalNav', [])
@@ -42,20 +48,12 @@ app.service('eventsService', [
         'use strict';
         var service = this;
 
-        service.location_info = {
-            lat: 0,
-            lon: 0
-        }
-
         service.$get = function (options) {
-            options.params.lat = service.location_info.lat;
-            options.params.lon = service.location_info.lon;
+            options.params.lat = location_info.lat;
+            options.params.lon = location_info.lon;
             return $http.get('/api/events/location', options)
                 .then(function (response) {
-                    console.log(response);
                     return response;
-                }, function (error) {
-                    console.log(error);
                 });
         };
 
@@ -67,11 +65,11 @@ app.service('eventsService', [
             if (text && text.length > 0) {
                 requestOptions.params.search = text;
             }
-            if (service.location_info.lat === 0) {
+            if (location_info.lat === 0) {
                 return geoLocation.getLocation()
                     .then(function (data) {
-                        service.location_info.lat = data.coords.latitude;
-                        service.location_info.lon = data.coords.longitude;
+                        location_info.lat = data.coords.latitude;
+                        location_info.lon = data.coords.longitude;
                     })
                     .then(function () {
                         return service.$get(requestOptions);
@@ -82,13 +80,13 @@ app.service('eventsService', [
         };
 
         service.get = function get (id) {
-            console.log(id);
+            // console.log(id);
             return $http.get('/api/events/id/' + id)
                 .then(function (response) {
-                    console.log('singleEvent:', response);
+                    // console.log('singleEvent:', response);
                     return response;
                 }, function (error) {
-                    console.log(error);
+                    // console.log(error);
                 });
         };
 
@@ -109,9 +107,9 @@ app.service('createEventService', [
                 max: event.volunteers_max
             }
             $http.post('/api/events/', event).then(function (resp) {
-                console.log(resp);
+                //console.log(resp);
             });
-            console.log('Inside createEvent in Service', event);
+            // console.log('Inside createEvent in Service', event);
         };
     }
 ]);
@@ -122,17 +120,11 @@ app.service('donationService', [
         'use strict';
         var service = this;
 
-        service.location_info = {
-            lat: 0,
-            lon: 0
-        }
-
         service.$get = function (options) {
-            options.params.lat = service.location_info.lat;
-            options.params.lon = service.location_info.lon;
+            options.params.lat = location_info.lat;
+            options.params.lon = location_info.lon;
             return $http.get('/api/donations/location', options)
                 .then(function (response) {
-                    console.log(response);
                     return response;
                 }, function (error) {
                     console.log(error);
@@ -146,16 +138,17 @@ app.service('donationService', [
             if (text && text.length > 0) {
                 requestOptions.params.search = text;
             }
-            if (service.location_info.lat === 0) {
+            if (location_info.lat === 0) {
                 return geoLocation.getLocation()
                     .then(function (data) {
-                        service.location_info.lat = data.coords.latitude;
-                        service.location_info.lon = data.coords.longitude;
+                        location_info.lat = data.coords.latitude;
+                        location_info.lon = data.coords.longitude;
                     })
                     .then(function () {
                         return service.$get(requestOptions);
                     });
             } else {
+                console.log('skipped lat/lon');
                 return service.$get(requestOptions);
             }
         };
@@ -252,21 +245,25 @@ ngModule('events', [])
                 if (data && data.status && data.status === 200) {
                     $scope.events = data;
                     setTimeout($scope.$digest, 0);
+                    console.log('set timeout for digest', new Date().getTime());
                 }
             });
 
             $scope.runSearch = function (text) {
                 console.log('yay text');
                 eventsService.searchCall(text).then(function (data) {
+                    console.log('received from api', new Date().getTime());
                     self.events = data.data;
                 });
             };
 
             eventsService.searchCall().then(function (data) {
                 self.events = data.data;
+                console.log('received from api', new Date().getTime());
             });
             self.events = {result: [{description: 'test'}], status: 0};
             $scope.events = self.events;
+            console.log('in controller', new Date().getTime());
         }
     ])
     .controller('eventDetailPageController', [
@@ -275,19 +272,19 @@ ngModule('events', [])
             'use strict';
             var self = this;
 
-            console.log($stateParams);
-
             $scope.$watch(function () {
                 return self.event;
             }, function (data) {
-                console.log('data received', data);
+                console.log(data);
                 if (data) {
                     $scope.event = data.resp;
                     setTimeout($scope.$digest, 0);
+                    console.log('set timeout for digest', new Date().getTime());
                 }
             });
             eventsService.get($stateParams.id).then(function (data) {
                 self.event = data.data;
+                console.log('received from api', new Date().getTime());
             });
             self.event = undefined;
             $scope.event = self.event;
@@ -304,6 +301,7 @@ ngModule('events', [])
                     alert('Thanks for signing up');
                 });
             }
+            console.log('loaded controller', new Date().getTime());
         }
     ]);
 
