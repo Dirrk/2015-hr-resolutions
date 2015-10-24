@@ -50,6 +50,7 @@ form[role="search"] {
 		z-index: 5;
 		background-color: $white;
 		border-bottom: 1px solid $blue;
+		margin-top: 60px;
 	}
 
 	.navbar-brand {
@@ -59,6 +60,7 @@ form[role="search"] {
 
 .page-content {
 	margin-top: 110px;
+	margin-bottom: 50px;
 
 	.form-control {
 		width: 80%;
@@ -283,6 +285,7 @@ form[role="search"] {
 		.navbar-collapse {
 			float: right;
 			background-color: transparent;
+			margin-top: 0;
 
 			a {
 				color: $darkerBlue;
@@ -303,5 +306,23 @@ form[role="search"] {
 		li {
 			font-size: $font-size-4xlarge;
 		}
+	}
+
+
+	.navigation {
+		height: 70px;
+
+		.navbar-collapse {
+			margin-top: 20px;
+		}
+		.logo  img {
+			width: 200px;
+			height: 55px;
+			margin: 0 0 0 -10px;
+		}
+	}
+
+	.page-content {
+		margin-top: 70px;
 	}
 }

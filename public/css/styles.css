@@ -36,12 +36,14 @@ form[role="search"] {
   .navigation .navbar-collapse {
     z-index: 5;
     background-color: #fff;
-    border-bottom: 1px solid #009FCF; }
+    border-bottom: 1px solid #009FCF;
+    margin-top: 60px; }
   .navigation .navbar-brand {
     padding: 8px 10px; }
 
 .page-content {
-  margin-top: 110px; }
+  margin-top: 110px;
+  margin-bottom: 50px; }
   .page-content .form-control {
     width: 80%;
     display: inline; }
@@ -204,7 +206,8 @@ form[role="search"] {
         background-color: transparent; }
     .navigation .navbar-collapse {
       float: right;
-      background-color: transparent; }
+      background-color: transparent;
+      margin-top: 0; }
       .navigation .navbar-collapse a {
         color: #2e6cb5; } }
 @media screen and (max-width: 320px) {
@@ -212,6 +215,18 @@ form[role="search"] {
     width: 76%; }
 
   .event-listings li {
-    font-size: 24px; } }
+    font-size: 24px; }
+
+  .navigation {
+    height: 70px; }
+    .navigation .navbar-collapse {
+      margin-top: 20px; }
+    .navigation .logo img {
+      width: 200px;
+      height: 55px;
+      margin: 0 0 0 -10px; }
+
+  .page-content {
+    margin-top: 70px; } }
 
 /*# sourceMappingURL=styles.css.map */
