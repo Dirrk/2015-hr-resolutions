@@ -1,12 +1,12 @@
-<div class="container inside">
+<div data-ng-controller="eventsPageController" class="container inside">
     <div class="row">
         <div class="navigation">
             <data-global-nav></data-global-nav>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 page-content">
             <form role="search">
-                <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
-                <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
+                <input type="text" class="form-control" data-ng-model="eventsPageController.searchText" globalplaceholder="Search">
+                <button type="submit" data-ng-click="runSearch(eventsPageController.searchText)" class="btn btn-default">Submit</button>
             </form>
 
             <h1>Events</h1>

@@ -32,10 +32,7 @@ ngModule('globalNav', [])
     .controller('globalNavController', [
         '$scope', 'eventsService', function ($scope, eventsService) {
             var self = this;
-            self.runSearch = function (text) {
-                console.log('yay text');
-                eventsService.searchCall(text);
-            }
+
         }
     ]);
 
@@ -200,6 +197,8 @@ ngModule('events', [])
         function ($scope, eventsService) {
             'use strict';
             var self = this;
+
+
             $scope.$watch(function () {
                 return self.events;
             }, function (data) {
@@ -209,6 +208,12 @@ ngModule('events', [])
                     setTimeout($scope.$digest, 0);
                 }
             });
+
+            $scope.runSearch = function (text) {
+                console.log('yay text');
+                eventsService.searchCall(text);
+            };
+
             eventsService.searchCall().then(function (data) {
                 self.events = data.data;
             });
