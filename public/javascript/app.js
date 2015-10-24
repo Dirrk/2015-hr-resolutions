@@ -280,6 +280,8 @@ ngModule('donate', [])
 
             var self = this;
                 self.category = $stateParams.category;
+            console.log(self.category);
+            $scope.category = self.category;
             $scope.$watch(function () {
                 return self.donations;
             }, function (data) {
