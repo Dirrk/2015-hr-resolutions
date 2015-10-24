@@ -9,7 +9,8 @@ var app = ngModule('hrApp', [
     'events',
     'globalNav',
     'ui.router',
-    'geolocation'
+    'geolocation',
+    'create'
 ]);
 
 ngModule('globalNav', [])
@@ -303,6 +304,15 @@ ngModule('myAccount', [])
         }
     ]);
 
+ngModule('create', [])
+    .controller('createController', [
+        '$scope',
+        'createService',
+        function ($scope, createService) {
+            var self = this;
+        }
+    ]);
+
 // bootstrapping the application this way avoids clutting up the
 // home page with 'ngapp=hrapp'
 app.config(function ($stateProvider, $urlRouterProvider) {
@@ -338,6 +348,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/my-account',
             templateUrl: '/views/my-account.html',
             controller: 'myAccountPageController'
+        })
+        .state('create', {
+            url: '/create',
+            templateUrl: '/views/create.html',
+            controller: 'createController'
         });
 });
 
