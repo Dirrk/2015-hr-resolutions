@@ -81,6 +81,73 @@ app.service('eventsService', [
                 return service.$get(requestOptions);
             }
         };
+
+        service.get = function get(id) {
+            console.log(id);
+            return $http.get('/api/events/id/' + id)
+                .then(function (response) {
+                    console.log('singleEvent:', response);
+                    return response;
+            }, function (error) {
+                console.log(error);
+            });
+        };
+    }
+]);
+
+// THIS IS A SERVICE. RETURN THINGS HERE
+app.service('donationService', [
+    '$http', 'geolocation', function ($http, geoLocation) {
+        'use strict';
+        var service = this;
+
+        service.location_info = {
+            lat: 0,
+            lon: 0
+        }
+
+        service.$get = function (options) {
+            options.params.lat = service.location_info.lat;
+            options.params.lon = service.location_info.lon;
+            return $http.get('/api/donations/location', options)
+                .then(function (response) {
+                    console.log(response);
+                    return response;
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+        service.searchCall = function (text) {
+            var requestOptions = {
+                params: {}
+            };
+            if (text && text.length > 0) {
+                requestOptions.params.search = text;
+            }
+            if (service.location_info.lat === 0) {
+                return geoLocation.getLocation()
+                    .then(function (data) {
+                        service.location_info.lat = data.coords.latitude;
+                        service.location_info.lon = data.coords.longitude;
+                    })
+                    .then(function () {
+                        return service.$get(requestOptions);
+                    });
+            } else {
+                return service.$get(requestOptions);
+            }
+        };
+
+        service.get = function get(id) {
+            return $http.get('/api/donations/' + id)
+                .then(function (response) {
+                    console.log('singleDonation:', response);
+                    return response;
+            }, function (error) {
+                console.log(error);
+            });
+        };
     }
 ]);
 
@@ -167,10 +234,27 @@ ngModule('events', [])
         }
     ])
     .controller('eventDetailPageController', [
-        '$scope',
-        function ($scope) {
+        '$scope', 'eventsService', '$stateParams',
+        function ($scope, eventsService, $stateParams) {
+            'use strict';
             var self = this;
 
+            console.log($stateParams);
+
+            $scope.$watch(function () {
+                return self.event;
+            }, function (data) {
+                console.log('data received', data);
+                if (data) {
+                    $scope.event = data.resp;
+                    setTimeout($scope.$digest, 0);
+                }
+            });
+            eventsService.get($stateParams.id).then(function (data) {
+                self.event = data.data;
+            });
+            self.event = undefined;
+            $scope.event = self.event;
         }
     ]);
 
@@ -188,11 +272,24 @@ ngModule('donate', [])
         }
     })
     .controller('donatePageController', [
-        '$scope',
-        function ($scope) {
+        '$scope', 'donationService',
+        function ($scope, donationService) {
+            'use strict';
             var self = this;
-            self.title = 'yay wtf';
-            console.log('donate page scope');
+            $scope.$watch(function () {
+                return self.donations;
+            }, function (data) {
+                console.log('data received', data.status);
+                if (data && data.status && data.status === 200) {
+                    $scope.donations = data;
+                    setTimeout($scope.$digest, 0);
+                }
+            });
+            donationService.searchCall().then(function (data) {
+                self.donations = data.data;
+            });
+            self.donations = { result: [{name: 'test'}], status: 0};
+            $scope.donations = self.donations;
         }
     ]);
 
@@ -232,8 +329,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/events.html',
             controller: 'eventsPageController'
         })
-        .state('eventsList', {
-            url: '/eventsList',
+        .state('eventsDetail', {
+            url: '/events/:id',
             templateUrl: '/views/event-detail.html',
             controller: 'eventDetailPageController'
         })

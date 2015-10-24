@@ -47,8 +47,8 @@
             </ul>
 
 
-            <ul ng-repeat="event in events.result" class="event-listings">
-                <li class="col-xs-6 col-sm-6 col-md-6" ng-class-even="'even-listing'">{{event.description}}</li>
+            <ul ng-repeat="event in events.result">
+                <li ui-sref='eventsDetail({id: event.id})'><a>{{event.name}} {{event.city}} {{event.date}} {{event.time}}</a></li>
             </ul>
         </div>
     </div>
