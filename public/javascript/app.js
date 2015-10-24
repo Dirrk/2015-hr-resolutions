@@ -103,10 +103,17 @@ app.service('createEventService', [
         var service = this;
 
         service.createEvent = function (event) {
-            console.log(event);
-        }
+            event.volunteers_needed = {
+                min: event.volunteers_min,
+                max: event.volunteers_max
+            }
+            $http.post('/api/events/', event).then(function (resp) {
+                console.log(resp);
+            });
+            console.log('Inside createEvent in Service', event);
+        };
     }
-])
+]);
 
 // THIS IS A SERVICE. RETURN THINGS HERE
 app.service('donationService', [
@@ -167,7 +174,18 @@ app.service('donationService', [
 // END THE SERVICE
 
 ngModule('home', [])
-     .controller('homePageController', [
+    .directive('homePage', function () {
+        return {
+            restrict: 'E',
+            bindToController: true,
+            controller: 'homePageController',
+            controllerAs: 'homePageCtrl',
+            template: '<div><p>{{homePageCtrl.name}}</p></div>',
+            replace: true,
+            scope: {}
+        }
+    })
+    .controller('homePageController', [
         '$http',
         '$scope',
         '$q',
@@ -179,12 +197,19 @@ ngModule('home', [])
         }
     ]);
 
-ngModule('register', [])
-    .controller('registerPageController', function () {
-       var self = this;
-    });
-
 ngModule('about', [])
+    .directive('aboutPage', function () {
+        return {
+            restrict: 'E',
+            bindToController: true,
+            controller: 'aboutPageController',
+            controllerAs: 'aboutPageCtrl',
+            template: '<div><p>{{aboutPageCtrl.title}}</p></div>',
+            replace: true,
+            scope: {}
+
+        }
+    })
     .controller('aboutPageController', [
         '$scope',
         function ($scope) {
@@ -195,6 +220,18 @@ ngModule('about', [])
     ]);
 
 ngModule('events', [])
+    .directive('eventsPage', function () {
+        return {
+            restrict: 'E',
+            bindToController: true,
+            controller: 'eventsPageController',
+            controllerAs: 'eventsPageCtrl',
+            template: '<div><p>{{eventsPageCtrl.title}}</p></div>',
+            replace: true,
+            scope: {}
+
+        }
+    })
     .controller('eventsPageController', [
         '$scope', 'eventsService',
         function ($scope, eventsService) {
@@ -242,6 +279,17 @@ ngModule('events', [])
     ]);
 
 ngModule('donate', [])
+    .directive('donatePage', function () {
+        return {
+            restrict: 'E',
+            bindToController: true,
+            controller: 'donatePageController',
+            controllerAs: 'donatePageCtrl',
+            replace: true,
+            scope: {}
+
+        }
+    })
     .controller('donateCategoryPageController', [
         '$scope',
         '$stateParams',
@@ -251,8 +299,6 @@ ngModule('donate', [])
 
             var self = this;
                 self.category = $stateParams.category;
-            console.log(self.category);
-            $scope.category = self.category;
             $scope.$watch(function () {
                 return self.donations;
             }, function (data) {
@@ -301,7 +347,7 @@ ngModule('myAccount', [])
     ]);
 
 ngModule('createEvent', [])
-    .directive('createEventPage', function () {
+    .directive('create-page', function () {
         return {
             restrict: 'E',
             bindToController: true,
@@ -309,33 +355,48 @@ ngModule('createEvent', [])
             controllerAs: 'createController',
             replace: true,
             scope: {}
-
         }
     })
     .controller('createController', [
         '$scope',
         'createEventService',
         function ($scope, createService) {
-            var self = this;
-            console.log($scope);
-            self.createEvent = function () {
+            $scope.event = {
+                name: '',
+                website: '',
+                description: '',
+                address: '',
+                city: '',
+                state: '',
+                zip:'',
+                contact_name: '',
+                contact_phone: '',
+                contact_email: '',
+                volunteers_min: '',
+                volunteers_max: '',
+                img: '',
+                start_date: '',
+                end_date: ''
+            };
+            $scope.createEvent = function (event) {
                 console.log('createEvent in controller');
+                console.log('passedIn event:', event);
                 var event = {
-                    name: $scope.name,
-                    website: $scope.website,
-                    description: $scope.description,
-                    address: $scope.address,
-                    city: $scope.city,
-                    state: $scope.state,
-                    zip: $scope.zip,
-                    contact_name: $scope.contact_name,
-                    contact_phone: $scope.contact_phone,
-                    contact_email: $scope.contact_email,
-                    volunteers_min: $scope.volunteers_min,
-                    volunteers_max: $scope.volunteers_max,
-                    img: $scope.img,
-                    start_date: $scope.start_date,
-                    end_date: $scope.end_date
+                    name: event.name,
+                    website: event.website,
+                    description: event.description,
+                    address: event.address,
+                    city: event.city,
+                    state: event.state,
+                    zip: event.zip,
+                    contact_name: event.contact_name,
+                    contact_phone: event.contact_phone,
+                    contact_email: event.contact_email,
+                    volunteers_min: event.volunteers_min,
+                    volunteers_max: event.volunteers_max,
+                    img: event.img,
+                    start_date: event.start_date,
+                    end_date: event.end_date
                 };
                 createService.createEvent(event);
             }
@@ -358,11 +419,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/about.html',
             controller: 'aboutPageController'
         })
-        .state('register',  {
-            url: '/register',
-            templateUrl: '/views/register.html',
-            controller: 'registerPageController'
-        })
         .state('donate', {
             url: '/donate',
             templateUrl: '/views/donate.html',
@@ -383,7 +439,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/views/event-detail.html',
             controller: 'eventDetailPageController'
         })
-        .state('myAccount', {
+        .state('my-account', {
             url: '/my-account',
             templateUrl: '/views/my-account.html',
             controller: 'myAccountPageController'
