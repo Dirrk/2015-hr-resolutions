@@ -12,43 +12,11 @@
             </form>
 
             <h1>Events</h1>
-
             <ul class="event-listings">
-                <li class="col-xs-5 col-sm-5 col-md-5 odd-listing adopt-a-highway">
-                    <span class="event-title"></span>
-                        Adopt a Highway
-                    <span class="event-details">
-                        Virginia Beach<br>
-                        11/02 11:00am
+                <li ui-sref='eventsDetail({id: event.id})' ng-repeat="event in events.result" class="col-xs-5 col-sm-5 col-md-5" ng-class-even="'even-listing'" ng-class-odd="'odd-listing'" style="background-image: url({{event.img_url}});">
+                    <span class="event-title">
+                        {{event.name}}
                     </span>
-                </li>
-                <li class="col-xs-5 col-sm-5 col-md-5 even-listing car-wash">
-                    Community Car Wash
-                    <span class="event-details">
-                        Portsmouth<br>
-                        11/02 9:00am
-                    </span>
-                </li>
-                <li class="col-xs-5 col-sm-5 col-md-5 odd-listing food-drive">
-                    Food Drive
-                    <span class="event-details">
-                        Norfolk<br>
-                        11/09 8:00am
-                    </span>
-                </li>
-                <li class="col-xs-5 col-sm-5 col-md-5 even-listing run-volunteer">
-                    Run Volunteer
-                    <span class="event-details">
-                        Chesapeake<br>
-                        11/04 7:00am
-                    </span>
-                </li>
-            </ul>
-
-
-            <ul>
-                <li ui-sref='eventsDetail({id: event.id})' ng-repeat="event in events.result" class="col-xs-5 col-sm-5 col-md-5" ng-class-even="'even-listing'" ng-class-odd="'odd-listing">
-                    {{event.name}}
                     <span class="event-details">
                         {{event.city}}<br>
                         {{event.date}} {{event.time}}
