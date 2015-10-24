@@ -36,9 +36,16 @@ ngModule('globalNav', [])
         }
     })
     .controller('globalNavController', [
-        '$scope', 'eventsService', function ($scope, eventsService) {
+        '$scope', 'eventsService', '$location', function ($scope, eventsService, $location) {
             var self = this;
+            self.location = $location.$$path;
+            if(self.location.includes('/donate')) {
+                $scope.donateLink = true;
+            }
 
+            if(self.location.includes('/events')) {
+                $scope.eventsLink = true;
+            }
         }
     ]);
 
