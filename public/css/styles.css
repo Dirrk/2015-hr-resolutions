@@ -29,6 +29,10 @@ form[role="search"] {
     border-width: 0; }
     .navigation .navbar-default .navbar-toggle {
       background-color: #fff; }
+  .navigation .navbar-collapse {
+    z-index: 5;
+    background-color: #fff;
+    border-bottom: 1px solid #009FCF; }
 
 .page-content {
   margin-top: 50px; }

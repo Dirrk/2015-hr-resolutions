@@ -15,9 +15,8 @@
 
             <ul class="event-listings">
                 <li class="col-xs-5 col-sm-5 col-md-5 odd-listing adopt-a-highway">
-                    <span class="event-title">
+                    <span class="event-title"></span>
                         Adopt a Highway
-                    </span>
                     <span class="event-details">
                         Virginia Beach<br>
                         11/02 11:00am
@@ -47,8 +46,14 @@
             </ul>
 
 
-            <ul ng-repeat="event in events.result">
-                <li ui-sref='eventsDetail({id: event.id})'><a>{{event.name}} {{event.city}} {{event.date}} {{event.time}}</a></li>
+            <ul>
+                <li ui-sref='eventsDetail({id: event.id})' ng-repeat="event in events.result" class="col-xs-5 col-sm-5 col-md-5" ng-class-even="'even-listing'" ng-class-odd="'odd-listing">
+                    {{event.name}}
+                    <span class="event-details">
+                        {{event.city}}<br>
+                        {{event.date}} {{event.time}}
+                    </span>
+                </li>
             </ul>
         </div>
     </div>
