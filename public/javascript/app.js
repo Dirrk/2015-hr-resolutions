@@ -30,9 +30,16 @@ ngModule('globalNav', [])
         }
     })
     .controller('globalNavController', [
-        '$scope', 'eventsService', function ($scope, eventsService) {
+        '$scope', 'eventsService', '$location', function ($scope, eventsService, $location) {
             var self = this;
+            self.location = $location.$$path;
+            if(self.location.includes('/donate')) {
+                $scope.donateLink = true;
+            }
 
+            if(self.location.includes('/events')) {
+                $scope.eventsLink = true;
+            }
         }
     ]);
 
@@ -447,22 +454,34 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('donate', {
             url: '/donate',
             templateUrl: '/views/donate.html',
-            controller: 'donatePageController'
+            controller: 'donatePageController',
+            data: {
+                page: 'donatePage'
+            }
         })
         .state('donateCategory', {
             url: '/donate/:category',
             templateUrl: '/views/donate-category.html',
-            controller: 'donateCategoryPageController'
+            controller: 'donateCategoryPageController',
+            data: {
+                page: 'donatePage'
+            }
         })
         .state('events', {
             url: '/events',
             templateUrl: '/views/events.html',
-            controller: 'eventsPageController'
+            controller: 'eventsPageController',
+            data: {
+                page: 'eventsPage'
+            }
         })
         .state('eventsDetail', {
             url: '/events/:id',
             templateUrl: '/views/event-detail.html',
-            controller: 'eventDetailPageController'
+            controller: 'eventDetailPageController',
+            data: {
+                page: 'eventsPage'
+            }
         })
         .state('my-account', {
             url: '/my-account',
