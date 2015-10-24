@@ -283,6 +283,13 @@ form[role="search"] {
 	}
 }
 
+@media screen and (min-width: 800px) {
+	.inside {
+		.row {
+			margin-left: -130px;
+		}
+	}
+}
 
 @media screen and (min-width: 480px) {
 	.page-content {
@@ -355,5 +362,12 @@ form[role="search"] {
 
 	.page-content {
 		margin-top: 70px;
+	}
+
+	.footer {
+		button {
+			height: 46px;
+			font-size: $font-size-medium;
+		}
 	}
 }

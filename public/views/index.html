@@ -23,7 +23,7 @@
 <body>
     <section data-ui-view></section>
 
-    <section class="footer">
+    <section class="footer" data-ng-if="!$state.includes('root')">
         <button ui-sref="events">Register</button>
         <button ui-sref="donate">Sign Up Today</button>
         <button ui-sref="donate">Share<br>

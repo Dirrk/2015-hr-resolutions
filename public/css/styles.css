@@ -210,6 +210,9 @@ form[role="search"] {
     display: table;
     clear: both; }
 
+@media screen and (min-width: 800px) {
+  .inside .row {
+    margin-left: -130px; } }
 @media screen and (min-width: 480px) {
   .page-content .form-control {
     width: 80%; }
@@ -250,6 +253,10 @@ form[role="search"] {
       margin: 0 0 0 -10px; }
 
   .page-content {
-    margin-top: 70px; } }
+    margin-top: 70px; }
+
+  .footer button {
+    height: 46px;
+    font-size: 14px; } }
 
 /*# sourceMappingURL=styles.css.map */
