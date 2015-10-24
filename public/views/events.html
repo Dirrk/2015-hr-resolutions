@@ -12,13 +12,15 @@
             <h1>Events</h1>
             <ul class="event-listings">
                 <li ui-sref='eventsDetail({id: event.id})' ng-repeat="event in events.result" class="col-xs-5 col-sm-5 col-md-5" ng-class-even="'even-listing'" ng-class-odd="'odd-listing'" style="background-image: url({{event.img_url}});">
-                    <span class="event-title">
-                        {{event.name}}
-                    </span>
-                    <span class="event-details">
-                        {{event.city}}<br>
-                        {{event.date}} {{event.time}}
-                    </span>
+                    <div class="event-fade">
+                        <span class="event-title">
+                            {{event.name}}
+                        </span>
+                        <span class="event-details">
+                            {{event.city}}<br>
+                            {{event.date}} {{event.time}}
+                        </span>
+                    </div>
                 </li>
             </ul>
         </div>
