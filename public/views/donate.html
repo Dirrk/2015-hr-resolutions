@@ -1,15 +1,17 @@
-<data-global-nav></data-global-nav>
-<div class="container">
-
-
-    <form class="navbar-form navbar-left navigation" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
-        </div>
-        <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
-    </form>
+<div class="container inside">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">Donate</div>
+        <div class="navigation">
+            <data-global-nav></data-global-nav>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 page-content">
+            <form role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
+                </div>
+                <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
+            </form>
+
+            <h1>Donate</h1>
         <a ui-sref="donateCategory({category: 'clothes'})"><div class="donateItem donate-clothes col-xs-5 col-sm-5 col-md-5"></div></a>
         <a ui-sref="donateCategory({category: 'blood'})"><div class="donateItem donate-blood col-xs-5 col-sm-5 col-md-5"></div></a>
         <a ui-sref="donateCategory({category: 'money'})"><div class="donateItem donate-money col-xs-5 col-sm-5 col-md-5"></div></a>
