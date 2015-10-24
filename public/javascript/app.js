@@ -179,6 +179,11 @@ ngModule('home', [])
         }
     ]);
 
+ngModule('register', [])
+    .controller('registerPageController', function () {
+       var self = this;
+    });
+
 ngModule('about', [])
     .directive('aboutPage', function () {
         return {
@@ -281,6 +286,8 @@ ngModule('donate', [])
 
             var self = this;
                 self.category = $stateParams.category;
+            console.log(self.category);
+            $scope.category = self.category;
             $scope.$watch(function () {
                 return self.donations;
             }, function (data) {
@@ -352,6 +359,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/about',
             templateUrl: '/views/about.html',
             controller: 'aboutPageController'
+        })
+        .state('register',  {
+            url: '/register',
+            templateUrl: '/views/register.html',
+            controller: 'registerPageController'
         })
         .state('donate', {
             url: '/donate',
