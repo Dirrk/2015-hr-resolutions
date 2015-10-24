@@ -41,6 +41,12 @@ form[role="search"] {
 			background-color: #fff;
 		}
 	}
+
+	.navbar-collapse {
+		z-index: 5;
+		background-color: $white;
+		border-bottom: 1px solid $blue;
+	}
 }
 
 .page-content {

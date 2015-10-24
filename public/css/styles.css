@@ -1,0 +1,153 @@
+body {
+  font-family: 'Dosis', sans-serif;
+  font-size: 12px; }
+
+h1 {
+  text-transform: uppercase; }
+
+form[role="search"] {
+  margin-top: 20px; }
+
+.col-xs-5, .col-sm-5, .col-md-5 {
+  width: 47%; }
+
+.navbar-default, .logo {
+  position: fixed;
+  z-index: 10; }
+
+.navigation {
+  height: 50px;
+  background-color: #009FCF;
+  position: fixed;
+  z-index: 5;
+  width: 100%; }
+  .navigation .navbar-default {
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: transparent;
+    border-width: 0; }
+    .navigation .navbar-default .navbar-toggle {
+      background-color: #fff; }
+  .navigation .navbar-collapse {
+    z-index: 5;
+    background-color: #fff;
+    border-bottom: 1px solid #009FCF; }
+
+.page-content {
+  margin-top: 50px; }
+
+.logo {
+  background-color: #009FCF;
+  box-sizing: border-box;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%); }
+  .logo img {
+    margin: 20px; }
+  .logo .tagline {
+    padding: 5px;
+    background-color: #e9d518;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-align: center; }
+  .navigation .logo img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 7px;
+    margin: 0; }
+
+.home-donate {
+  background-image: url("/img/LandingPage_left.png"); }
+
+.home-events {
+  background-image: url("/img/LandingPage_right.png"); }
+
+.home-donate, .home-events {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  vertical-align: bottom;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  position: relative; }
+  .home-donate:before, .home-events:before {
+    content: '';
+    height: 100%;
+    vertical-align: bottom;
+    display: inline-block;
+    margin-bottom: -60%; }
+  .home-donate .btn, .home-events .btn {
+    bottom: 0;
+    padding-left: 50px;
+    padding-right: 50px; }
+
+.event-listings {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  margin: 0 10px 8px 10px; }
+  .event-listings li {
+    padding: 10px;
+    margin: 0 5px 5px 0;
+    min-height: 180px;
+    font-size: 30px;
+    font-weight: 800;
+    color: #e9d518;
+    position: relative; }
+    .event-listings li.adopt-a-highway, .event-listings li.car-wash, .event-listings li.food-drive, .event-listings li.run-volunteer {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 0 -15px; }
+    .event-listings li.adopt-a-highway {
+      background-image: url("/img/AdoptAHighway.jpg"); }
+    .event-listings li.car-wash {
+      background-image: url("/img/Car_wash.jpg"); }
+    .event-listings li.food-drive {
+      background-image: url("/img/Food_Drive.jpg"); }
+    .event-listings li.run-volunteer {
+      background-image: url("/img/Run_Volunteer.jpg"); }
+    .event-listings li.odd-listing {
+      background-color: #009FCF; }
+      .event-listings li.odd-listing .event-details {
+        color: #fff100; }
+    .event-listings li.even-listing {
+      background-color: #e9d518; }
+      .event-listings li.even-listing .event-details {
+        color: #2e6cb5; }
+    .event-listings li img {
+      max-width: 100%; }
+    .event-listings li .event-details {
+      font-size: 18px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 5px;
+      font-weight: 400;
+      text-align: center;
+      width: 100%; }
+      .event-listings li .event-details:before {
+        content: '';
+        display: table;
+        clear: both; }
+
+.footer {
+  background-color: #e9d518;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 0;
+  padding: 8px 8px 8px 8px;
+  width: 320px;
+  text-align: center;
+  font-weight: 800;
+  color: #2e6cb5;
+  left: 50%;
+  transform: translateX(-50%); }
+  .footer img {
+    margin: -5px 5px 0 0; }
+
+/*# sourceMappingURL=styles.css.map */
