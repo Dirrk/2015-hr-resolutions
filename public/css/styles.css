@@ -98,12 +98,13 @@ form[role="search"] {
     text-transform: uppercase;
     letter-spacing: .1em;
     text-align: center; }
-  .register .register-now-form input, .register .register-now-form button {
-    width: 100%;
-    outline: 0;
-    padding: 5px; }
-  .register .register-now-form input {
-    border: 2px solid #009FCF; }
+
+.register-now-form input, .register-now-form button, .sign-up-now-form input, .sign-up-now-form button {
+  width: 100%;
+  outline: 0;
+  padding: 5px; }
+.register-now-form input, .sign-up-now-form input {
+  border: 2px solid #009FCF; }
 
 .donateItem {
   background: black;
@@ -196,11 +197,10 @@ form[role="search"] {
     font-size: 30px;
     font-weight: 800;
     color: #e9d518;
-    position: relative; }
-    .event-listings li.adopt-a-highway, .event-listings li.car-wash, .event-listings li.food-drive, .event-listings li.run-volunteer, .donate-category li.adopt-a-highway, .donate-category li.car-wash, .donate-category li.food-drive, .donate-category li.run-volunteer {
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: 0 -15px; }
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0 -15px; }
     .event-listings li.odd-listing, .donate-category li.odd-listing {
       background-color: #009FCF; }
       .event-listings li.odd-listing .event-details, .donate-category li.odd-listing .event-details {
@@ -242,31 +242,28 @@ form[role="search"] {
   bottom: 0;
   width: 100%;
   text-align: center;
-  -moz-box-shadow: inset black 0 -1px;
-  -webkit-box-shadow: inset black 0 -1px;
-  box-shadow: inset black 0 -1px; }
+  -moz-box-shadow: inset #000 0 -1px;
+  -webkit-box-shadow: inset #000 0 -1px;
+  box-shadow: inset #000 0 -1px; }
   .footer button {
     font-weight: 400;
     font-size: 14px;
     color: #fff;
     background-color: #000;
-    width: 33%;
+    width: 50%;
     float: left;
     border: 0;
-    border-right: 1px solid #2a79c1;
-    -moz-box-shadow: inset -1px 0 0 black;
-    -webkit-box-shadow: inset -1px 0 0 black;
-    box-shadow: inset -1px 0 0 black;
+    border-right: 1px solid #000;
+    border-left: 1px solid #333;
     text-align: center;
     vertical-align: middle;
     height: 50px;
     text-transform: uppercase;
     outline: 0; }
-    .footer button:nth-of-type(2) {
-      width: 34%; }
+    .footer button:first-of-type {
+      border-left-width: 0; }
     .footer button:last-of-type {
-      border-width: 0;
-      box-shadow: inset 0 0 0; }
+      border-right-width: 0; }
   .footer img {
     margin: -5px 5px 0 0; }
   .footer:after::before, .footer:after::after {

@@ -4,7 +4,7 @@
             <data-global-nav></data-global-nav>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 page-content" ng-controller="eventDetailPageController">
-            <div class="event-image" style="background-image: url('/img/Food_Drive.jpg');"></div>
+            <div class="event-image" style="background-image: url('{{event.img_url}}');"></div>
             <h1>{{event.name}}</h1>
             <p>{{event.description}}</p>
 
@@ -12,13 +12,21 @@
             <h3>Where?</h3>
             <p>{{event.where.address}},<br>
                 {{event.where.location}}</p>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.411630731349!2d-76.30568367352778!3d36.888902504695665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ba99b230ce2f37%3A0xd0cb134d0d9fec9c!2s5115+Hampton+Blvd%2C+Norfolk%2C+VA+23529!5e0!3m2!1sen!2sus!4v1445671392691" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe src="{{event.map_url}}" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
             <h3>When?</h3>
             <p>{{event.when}}</p>
             <h3>Who?</h3>
             <p><strong>{{event.contact.name}}</strong><br>
             {{event.contact.phone}}<br>
             <a ng-href="mailto:{{event.contact.email}}">{{event.contact.email}}</a></p>
+
+            <h3>Sign Up For This Event</h3>
+            <form class="sign-up-now-form">
+                <p><input type="text" placeholder="Name:" id="register-name"></p>
+                <p><input type="email" placeholder="Email:" id="register-email"></p>
+                <p><input type="tel" placeholder="Phone number:" id="register-phone"></p>
+                <p><button type="submit" id="submit" value="Submit" class="btn btn-primary">CREAT ACCOUNT</button></p>
+            </form>
         </div>
     </div>
 </div>
