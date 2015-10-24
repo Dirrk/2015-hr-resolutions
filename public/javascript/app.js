@@ -91,6 +91,13 @@ app.service('eventsService', [
                     console.log(error);
                 });
         };
+
+        service.signUp = function signUp(id, payload) {
+            $http.post('/api/events/signup/' + id, payload)
+                .then(function (response){
+                    console.log(response);
+            });
+        }
     }
 ]);
 
@@ -282,6 +289,17 @@ ngModule('events', [])
             });
             self.event = undefined;
             $scope.event = self.event;
+
+            $scope.input = {
+                name: '',
+                email: '',
+                phone: ''
+            };
+
+            $scope.signUp = function signUp(id, userData) {
+                console.log('signUp', id);
+                eventsService.signUp(id, userData);
+            }
         }
     ]);
 
