@@ -6,16 +6,28 @@
         <div class="col-xs-12 col-sm-12 col-md-12 page-content">
             <form role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
+                    <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText"
+                           globalplaceholder="Search">
                 </div>
-                <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
+                <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)"
+                        class="btn btn-default">Submit
+                </button>
             </form>
 
             <h1>Donate</h1>
-        <a ui-sref="donateCategory({category: 'clothes'})"><div class="donateItem donate-clothes col-xs-5 col-sm-5 col-md-5"></div></a>
-        <a ui-sref="donateCategory({category: 'blood'})"><div class="donateItem donate-blood col-xs-5 col-sm-5 col-md-5"></div></a>
-        <a ui-sref="donateCategory({category: 'money'})"><div class="donateItem donate-money col-xs-5 col-sm-5 col-md-5"></div></a>
-        <a ui-sref="donateCategory({category: 'food'})"><div class="donateItem donate-food col-xs-5 col-sm-5 col-md-5"></div></a>
+            <a ui-sref="donateCategory({category: 'clothes'})">
+                <div class="donateItem donate-clothes col-xs-5 col-sm-5 col-md-5"></div>
+            </a>
+            <a ui-sref="donateCategory({category: 'blood'})">
+                <div class="donateItem donate-blood col-xs-5 col-sm-5 col-md-5"></div>
+            </a>
+            <a ui-sref="donateCategory({category: 'money'})">
+                <div class="donateItem donate-money col-xs-5 col-sm-5 col-md-5"></div>
+            </a>
+            <a ui-sref="donateCategory({category: 'food'})">
+                <div class="donateItem donate-food col-xs-5 col-sm-5 col-md-5"></div>
+            </a>
 
+        </div>
     </div>
 </div>

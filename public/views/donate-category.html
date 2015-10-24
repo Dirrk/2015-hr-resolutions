@@ -1,9 +1,9 @@
 <div class="container inside">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12" ng-controller="donateCategoryPageController">Event Details</div>
-        <ul data-ng-repeat="donation in donations">
-            <li>{{donation}}</li>
-        </ul>
-        <p>{{donations}}</p>
+        <div data-ng-repeat="donation in donations.result">
+            <div>{{donation.name}}</div>
+        </div>
+        <p>{{donations.data}}</p>
     </div>
 </div>
