@@ -93,10 +93,7 @@ app.service('eventsService', [
         };
 
         service.signUp = function signUp(id, payload) {
-            $http.post('/api/events/signup/' + id, payload)
-                .then(function (response){
-                    console.log(response);
-            });
+            return $http.post('/api/events/signup/' + id, payload);
         }
     }
 ]);
@@ -201,6 +198,11 @@ ngModule('home', [])
         }
     ]);
 
+ngModule('register', [])
+    .controller('registerPageController', function () {
+       var self = this;
+    });
+
 ngModule('about', [])
     .directive('aboutPage', function () {
         return {
@@ -298,7 +300,9 @@ ngModule('events', [])
 
             $scope.signUp = function signUp(id, userData) {
                 console.log('signUp', id);
-                eventsService.signUp(id, userData);
+                eventsService.signUp(id, userData).then(function () {
+                    alert('Thanks for signing up');
+                });
             }
         }
     ]);
@@ -468,6 +472,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/my-account',
             templateUrl: '/views/my-account.html',
             controller: 'myAccountPageController'
+        })
+        .state('register',  {
+            url: '/register',
+            templateUrl: '/views/register.html',
+            controller: 'registerPageController'
         })
         .state('createEvent', {
             url: '/create/event',
