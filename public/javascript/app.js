@@ -1,3 +1,4 @@
+'use strict';
 var a = 'Hello world';
 console.log(a);
 
@@ -32,7 +33,7 @@ ngModule('globalNav', [])
         '$scope', 'eventsService', function ($scope, eventsService) {
             var self = this;
             self.runSearch = function (text) {
-            console.log('yay text');
+                console.log('yay text');
                 eventsService.searchCall(text);
             }
         }
@@ -56,9 +57,9 @@ app.service('eventsService', [
                 .then(function (response) {
                     console.log(response);
                     return response;
-            }, function (error) {
-                console.log(error);
-            });
+                }, function (error) {
+                    console.log(error);
+                });
         };
 
 
@@ -83,15 +84,15 @@ app.service('eventsService', [
             }
         };
 
-        service.get = function get(id) {
+        service.get = function get (id) {
             console.log(id);
             return $http.get('/api/events/id/' + id)
                 .then(function (response) {
                     console.log('singleEvent:', response);
                     return response;
-            }, function (error) {
-                console.log(error);
-            });
+                }, function (error) {
+                    console.log(error);
+                });
         };
     }
 ]);
@@ -114,9 +115,9 @@ app.service('donationService', [
                 .then(function (response) {
                     console.log(response);
                     return response;
-            }, function (error) {
-                console.log(error);
-            });
+                }, function (error) {
+                    console.log(error);
+                });
         };
 
         service.searchCall = function (text) {
@@ -140,14 +141,14 @@ app.service('donationService', [
             }
         };
 
-        service.get = function get(id) {
+        service.get = function get (id) {
             return $http.get('/api/donations/' + id)
                 .then(function (response) {
                     console.log('singleDonation:', response);
                     return response;
-            }, function (error) {
-                console.log(error);
-            });
+                }, function (error) {
+                    console.log(error);
+                });
         };
     }
 ]);
@@ -230,7 +231,7 @@ ngModule('events', [])
             eventsService.searchCall().then(function (data) {
                 self.events = data.data;
             });
-            self.events = { result: [{description: 'test'}], status: 0};
+            self.events = {result: [{description: 'test'}], status: 0};
             $scope.events = self.events;
         }
     ])
@@ -266,12 +267,35 @@ ngModule('donate', [])
             bindToController: true,
             controller: 'donatePageController',
             controllerAs: 'donatePageCtrl',
-            template: '<div><p>{{donatePageCtrl.title}}</p></div>',
             replace: true,
             scope: {}
 
         }
     })
+    .controller('donateCategoryPageController', [
+        '$scope',
+        '$stateParams',
+        'donationService',
+        function ($scope, $stateParams, donationService) {
+            console.log($stateParams);
+
+            var self = this;
+                self.category = $stateParams.category;
+            $scope.$watch(function () {
+                return self.donations;
+            }, function (data) {
+                if (data && data.status && data.status === 200) {
+                    $scope.donations = data;
+                    setTimeout($scope.$digest, 0);
+                }
+            });
+            donationService.searchCall().then(function (data) {
+                self.donations = data.data;
+            });
+            $scope.donations = self.donations;
+
+        }
+    ])
     .controller('donatePageController', [
         '$scope', 'donationService',
         function ($scope, donationService) {
@@ -289,7 +313,7 @@ ngModule('donate', [])
             donationService.searchCall().then(function (data) {
                 self.donations = data.data;
             });
-            self.donations = { result: [{name: 'test'}], status: 0};
+            self.donations = {result: [{name: 'test'}], status: 0};
             $scope.donations = self.donations;
         }
     ]);
@@ -333,6 +357,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/donate',
             templateUrl: '/views/donate.html',
             controller: 'donatePageController'
+        })
+        .state('donateCategory', {
+            url: '/donate/:category',
+            templateUrl: '/views/donate-category.html',
+            controller: 'donateCategoryPageController'
         })
         .state('events', {
             url: '/events',
