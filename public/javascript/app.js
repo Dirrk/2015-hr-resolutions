@@ -246,7 +246,7 @@ ngModule('events', [])
             }, function (data) {
                 console.log('data received', data);
                 if (data) {
-                    $scope.event = data.resp.doc;
+                    $scope.event = data.resp;
                     setTimeout($scope.$digest, 0);
                 }
             });
