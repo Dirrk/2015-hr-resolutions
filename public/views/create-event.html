@@ -1,29 +1,36 @@
-<div ng-controller="createController">
+<div class="container inside">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">Create</div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8">
-            <form role="create">
-                <div class="form-group">
-                    <input type="text" class="form-control" data-ng-model="createController.name" placeholder="Name">
-                    <input type="text" class="form-control" data-ng-model="createController.website" placeholder="Website">
-                    <textarea class="form-control" data-ng-model="createController.description" placeholder="Description"></textarea>
-                    <input type="text" class="form-control" data-ng-model="createController.address" placeholder="Address">
-                    <input type="text" class="form-control" data-ng-model="createController.city" placeholder="City">
-                    <input type="text" class="form-control" data-ng-model="createController.state" placeholder="state">
-                    <input type="text" class="form-control" data-ng-model="createController.zip" placeholder="zip">
-                    <input type="text" class="form-control" data-ng-model="createController.contact_name" placeholder="Contact Name">
-                    <input type="text" class="form-control" data-ng-model="createController.contact_phone" placeholder="Contact Phone">
-                    <input type="text" class="form-control" data-ng-model="createController.contact_email" placeholder="Contact Email">
-                    <input type="text" class="form-control" data-ng-model="createController.volunteers_min" placeholder="Volunteers Min">
-                    <input type="text" class="form-control" data-ng-model="createController.volunteers_max" placeholder="Volunteers Max">
-                    <input type="text" class="form-control" data-ng-model="createController.img" placeholder="Image url">
-                    <input type="text" class="form-control" data-ng-model="createController.start_date" placeholder="Start Date">
-                    <input type="text" class="form-control" data-ng-model="createController.end_date" placeholder="End Date">
+        <div class="navigation">
+            <data-global-nav></data-global-nav>
+        </div>
+        <div ng-controller="createController" class="page-content col-xs-10 col-sm-8 col-md-6 col-xs-offset-2 col-sm-offset-2 col-md-offset-4">
+            <div class="row">
+                <div><h3>Create Event</h3></div>
+            </div>
+            <div class="row">
+                <div>
+                    <form name="creatForm" role="create">
+                        <div class="form-group">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.name" placeholder="Name">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.website" placeholder="Website">
+                            <textarea style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.description" placeholder="Description"></textarea>
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.address" placeholder="Address">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.city" placeholder="City">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.state" placeholder="State">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.zip" placeholder="Zip">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.contact_name" placeholder="Contact Name">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.contact_phone" placeholder="Contact Phone">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.contact_email" placeholder="Contact Email">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.volunteers_min" placeholder="Volunteers Min">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.volunteers_max" placeholder="Volunteers Max">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.img_url" placeholder="Image url">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.date_start" placeholder="Start Date">
+                            <input type="text" style="margin-bottom: 5px" class="form-control" data-ng-model="createController.event.date_end" placeholder="End Date">
+                        </div>
+                        <button type="submit" data-ng-click="createEvent(createController.event)" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
-                <button type="submit" data-ng-click="createController.createEvent()" class="btn btn-default">Submit</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
