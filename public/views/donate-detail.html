@@ -3,14 +3,19 @@
         <div class="navigation">
             <data-global-nav></data-global-nav>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 page-content">
-            <form role="search">
-                <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
-                <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
-            </form>
+        <div class="col-xs-12 col-sm-12 col-md-12 page-content" ng-controller="donatePageController">
+            <h1>{{event.name}}</h1>
+            <p>{{event.description}}</p>
 
-            <h1>Donate Details</h1>
-
+            <h3>Where?</h3>
+            <p>{{event.where.address}},<br>
+                {{event.where.location}}</p>
+            <h3>When?</h3>
+            <p>{{event.when}}</p>
+            <h3>Who?</h3>
+            <p><strong>{{event.contact.name}}</strong><br>
+                {{event.contact.phone}}<br>
+                <a ng-href="mailto:{{event.contact.email}}">{{event.contact.email}}</a></p>
         </div>
     </div>
 </div>
