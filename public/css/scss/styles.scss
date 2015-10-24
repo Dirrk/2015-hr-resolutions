@@ -28,7 +28,7 @@ form[role="search"] {
 
 
 .navigation {
-	height: 100px;
+	height: 110px;
 	background-color: $blue;
 	position: fixed;
 	z-index: 5;
@@ -58,7 +58,7 @@ form[role="search"] {
 }
 
 .page-content {
-	margin-top: 100px;
+	margin-top: 110px;
 
 	.form-control {
 		width: 80%;
@@ -130,7 +130,7 @@ form[role="search"] {
 			left: 50%;
 			transform: translateX(-50%);
 			top: 7px;
-			margin: 0 0 0 -15px;
+			margin: 13px 0 0 0;
 		}
 	}	
 }

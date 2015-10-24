@@ -20,7 +20,7 @@ form[role="search"] {
   z-index: 10; }
 
 .navigation {
-  height: 100px;
+  height: 110px;
   background-color: #009FCF;
   position: fixed;
   z-index: 5;
@@ -41,7 +41,7 @@ form[role="search"] {
     padding: 8px 10px; }
 
 .page-content {
-  margin-top: 100px; }
+  margin-top: 110px; }
   .page-content .form-control {
     width: 80%;
     display: inline; }
@@ -98,7 +98,7 @@ form[role="search"] {
     left: 50%;
     transform: translateX(-50%);
     top: 7px;
-    margin: 0 0 0 -15px; }
+    margin: 13px 0 0 0; }
 
 .home-donate {
   background-image: url("/img/LandingPage_left.png"); }
