@@ -7,6 +7,7 @@ h1 {
   color: #e9d518;
   font-weight: 800;
   margin: 10px auto;
+  padding: 10px 0;
   display: table; }
 
 form[role="search"] {
@@ -14,6 +15,18 @@ form[role="search"] {
 
 .col-xs-5, .col-sm-5, .col-md-5 {
   width: 48%; }
+
+.container.inside {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0; }
+.container > .row {
+  margin-left: 0;
+  margin-right: 0; }
+.container.home .row {
+  margin-left: -15px;
+  margin-right: -15px; }
 
 .navbar-default, .logo {
   position: fixed;
@@ -32,7 +45,8 @@ form[role="search"] {
     background-color: transparent;
     border-width: 0; }
     .navigation .navbar-default .navbar-toggle {
-      background-color: #fff; }
+      background-color: #fff;
+      padding: 5px; }
   .navigation .navbar-collapse {
     z-index: 5;
     background-color: white;
@@ -49,6 +63,48 @@ form[role="search"] {
     display: inline; }
     .page-content .form-control + .btn {
       margin-top: -5px; }
+
+.register {
+  color: #2e6cb5;
+  font-size: 16px; }
+  .register .register-even {
+    color: #009fcf; }
+  .register .register-cta {
+    background-color: #2e6cb5;
+    color: #e9d518;
+    text-align: center;
+    font-size: 22px; }
+    .register .register-cta .woot-wording {
+      color: #009fcf;
+      font-size: 80px;
+      line-height: 1em; }
+    .register .register-cta .register-cta--top {
+      padding: 8px; }
+    .register .register-cta .register-cta--bottom {
+      background-color: #e9d518;
+      color: #2e6cb5;
+      padding: 5px; }
+      .register .register-cta .register-cta--bottom::after {
+        content: "";
+        display: table;
+        clear: both; }
+      .register .register-cta .register-cta--bottom .register-cta--bottom-left, .register .register-cta .register-cta--bottom .register-cta--bottom-right {
+        width: 50%;
+        text-align: center;
+        float: left; }
+  .register .register-now-title {
+    font-size: 50px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    text-align: center; }
+
+.register-now-form input, .register-now-form button, .sign-up-now-form input, .sign-up-now-form button {
+  width: 100%;
+  outline: 0;
+  padding: 5px; }
+.register-now-form input, .sign-up-now-form input {
+  border: 2px solid #009fcf; }
 
 .donateItem {
   background: black;
@@ -129,36 +185,35 @@ form[role="search"] {
     padding-left: 50px;
     padding-right: 50px; }
 
-.event-listings {
+.event-listings, .donate-category {
   padding: 0;
   margin: 0;
   list-style-type: none;
   margin: 0 10px 8px 10px; }
-  .event-listings li {
+  .event-listings li, .donate-category li {
     padding: 10px;
     margin: 0 5px 5px 0;
     min-height: 180px;
     font-size: 30px;
     font-weight: 800;
     color: #e9d518;
-    position: relative; }
-    .event-listings li.adopt-a-highway, .event-listings li.car-wash, .event-listings li.food-drive, .event-listings li.run-volunteer {
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: 0 -15px; }
-    .event-listings li.odd-listing {
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0 -15px; }
+    .event-listings li.odd-listing, .donate-category li.odd-listing {
       background-color: #009fcf; }
-      .event-listings li.odd-listing .event-details {
+      .event-listings li.odd-listing .event-details, .donate-category li.odd-listing .event-details {
         color: #fff100; }
-    .event-listings li.even-listing {
+    .event-listings li.even-listing, .donate-category li.even-listing {
       background-color: #e9d518; }
-      .event-listings li.even-listing .event-details {
+      .event-listings li.even-listing .event-details, .donate-category li.even-listing .event-details {
         color: #2e6cb5; }
-    .event-listings li img {
+    .event-listings li img, .donate-category li img {
       max-width: 100%; }
-    .event-listings li .event-title {
+    .event-listings li .event-title, .event-listings li .donation-category, .donate-category li .event-title, .donate-category li .donation-category {
       line-height: 1.2em; }
-    .event-listings li .event-details {
+    .event-listings li .event-details, .event-listings li .donation-details, .donate-category li .event-details, .donate-category li .donation-details {
       font-size: 18px;
       position: absolute;
       bottom: 0;
@@ -167,10 +222,19 @@ form[role="search"] {
       font-weight: 400;
       text-align: center;
       width: 100%; }
-      .event-listings li .event-details:before {
-        content: '';
+      .event-listings li .event-details:before::before, .event-listings li .event-details:before::after, .event-listings li .donation-details:before::before, .event-listings li .donation-details:before::after, .donate-category li .event-details:before::before, .donate-category li .event-details:before::after, .donate-category li .donation-details:before::before, .donate-category li .donation-details:before::after {
+        content: "";
         display: table;
         clear: both; }
+
+.event-detail-page {
+  font-size: 16px; }
+  .event-detail-page .event-image {
+    height: 250px;
+    background-position: top center;
+    background-size: cover;
+    margin-right: -15px;
+    margin-left: -15px; }
 
 .footer {
   text-transform: uppercase;
@@ -185,43 +249,84 @@ form[role="search"] {
     font-weight: 400;
     font-size: 14px;
     color: white;
-    background-color: #2e6cb5;
-    width: 33%;
+    background-color: black;
+    width: 50%;
     float: left;
     border: 0;
-    border-right: 1px solid #2a79c1;
-    -moz-box-shadow: inset -1px 0 0 black;
-    -webkit-box-shadow: inset -1px 0 0 black;
-    box-shadow: inset -1px 0 0 black;
+    border-right: 1px solid black;
+    border-left: 1px solid #333333;
     text-align: center;
     vertical-align: middle;
     height: 50px;
     text-transform: uppercase;
     outline: 0; }
-    .footer button:nth-of-type(2) {
-      width: 34%; }
+    .footer button:first-of-type {
+      border-left-width: 0; }
     .footer button:last-of-type {
-      border-width: 0;
-      box-shadow: inset 0 0 0; }
+      border-right-width: 0; }
   .footer img {
     margin: -5px 5px 0 0; }
-  .footer:after {
-    content: '';
+  .footer:after::before, .footer:after::after {
+    content: "";
     display: table;
     clear: both; }
 
-@media screen and (min-width: 800px) {
-  .inside .row {
-    margin-left: -130px; } }
+.my-account .my-account--info {
+  margin-bottom: 20px; }
+  .my-account .my-account--info::before, .my-account .my-account--info::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .my-account .my-account--info .my-account--image, .my-account .my-account--info .my-account--details {
+    float: left;
+    vertical-align: top;
+    padding: 0; }
+  .my-account .my-account--info .my-account--image {
+    margin-right: 10px; }
+  .my-account .my-account--info .my-account--details {
+    font-size: 18px; }
+    .my-account .my-account--info .my-account--details h3 {
+      font-size: 28px;
+      color: #2e6cb5;
+      margin: 0; }
+.my-account .my-account--reward-total {
+  font-size: 18px;
+  color: #2e6cb5;
+  text-align: center; }
+  .my-account .my-account--reward-total img {
+    margin-top: 10px; }
+.my-account .my-account-section {
+  background-color: #2e6cb5;
+  color: white;
+  font-size: 16px;
+  padding: 8px; }
+.my-account .event-listings::before, .my-account .event-listings::after {
+  content: "";
+  display: table;
+  clear: both; }
+.my-account .event-listings li {
+  width: 100px;
+  max-height: 100px;
+  min-height: 100px;
+  background-color: #009fcf;
+  font-size: 14px;
+  float: left;
+  text-align: center; }
+  .my-account .event-listings li .event-title {
+    font-weight: 400; }
+  .my-account .event-listings li .event-details {
+    color: white;
+    font-size: 12px;
+    bottom: 10px; }
+.my-account button.log-out {
+  width: 100%; }
+
 @media screen and (min-width: 480px) {
   .page-content .form-control {
     width: 80%; }
 
   .navbar-default .navbar-nav > li > a {
     color: white; }
-
-  .inside .row {
-    margin-left: -47px; }
 
   .navigation {
     margin: 0;

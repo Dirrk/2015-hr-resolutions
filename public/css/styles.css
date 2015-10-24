@@ -194,13 +194,22 @@ form[role="search"] {
     padding: 10px;
     margin: 0 5px 5px 0;
     min-height: 180px;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 800;
     color: #e9d518;
     position: relative;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 0 -15px; }
+    .event-listings li .event-fade, .donate-category li .event-fade {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      margin: -10px;
+      min-height: 124px; }
+      .event-listings li .event-fade::before, .event-listings li .event-fade::after, .donate-category li .event-fade::before, .donate-category li .event-fade::after {
+        content: "";
+        display: table;
+        clear: both; }
     .event-listings li.odd-listing, .donate-category li.odd-listing {
       background-color: #009FCF; }
       .event-listings li.odd-listing .event-details, .donate-category li.odd-listing .event-details {
