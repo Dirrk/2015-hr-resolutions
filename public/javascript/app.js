@@ -1,3 +1,4 @@
+'use strict';
 var a = 'Hello world';
 console.log(a);
 
@@ -271,16 +272,29 @@ ngModule('donate', [])
         }
     })
     .controller('donateCategoryPageController', [
-        '$stateParams',
-        function ($stateParams) {
-            console.log($stateParams);
-        }
-    ])
-    .controller('donatePageController', [
         '$scope',
         '$stateParams',
-        function ($scope, $stateParams) {
+        'donationService',
+        function ($scope, $stateParams, donationService) {
             console.log($stateParams);
+
+            var self = this;
+
+            $scope.$watch(function () {
+                return self.donations;
+            }, function (data) {
+                console.log('data received', data.status);
+                if (data && data.status && data.status === 200) {
+                    $scope.donations = data;
+                    setTimeout($scope.$digest, 0);
+                }
+            });
+            donationService.searchCall().then(function (data) {
+                self.donations = data.data;
+            });
+            self.donations = {result: [{name: 'test'}], status: 0};
+            $scope.donations = self.donations;
+
         }
     ])
     .controller('donatePageController', [
@@ -338,7 +352,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('donateCategory', {
             url: '/donate/:category',
-            template: '/views/donate-category.html',
+            templateUrl: '/views/donate-category.html',
             controller: 'donateCategoryPageController'
         })
         .state('events', {
