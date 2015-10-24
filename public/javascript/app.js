@@ -246,7 +246,7 @@ ngModule('events', [])
             }, function (data) {
                 console.log('data received', data);
                 if (data) {
-                    $scope.event = data.resp.doc;
+                    $scope.event = data.resp;
                     setTimeout($scope.$digest, 0);
                 }
             });
@@ -265,7 +265,6 @@ ngModule('donate', [])
             bindToController: true,
             controller: 'donatePageController',
             controllerAs: 'donatePageCtrl',
-            template: '<div><p>{{donatePageCtrl.title}}</p></div>',
             replace: true,
             scope: {}
 
