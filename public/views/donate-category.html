@@ -1,8 +1,23 @@
 <div class="container inside">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12" ng-controller="donateCategoryPageController">Event Details</div>
-        <div data-ng-repeat="donation in donations.result">
-            <div>{{donation.name}}</div>
+        <div class="navigation">
+            <data-global-nav></data-global-nav>
+        </div>
+        <form role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" data-ng-model="globalNavCtrl.searchText" globalplaceholder="Search">
+            </div>
+            <button type="submit" data-ng-click="globalNavCtrl.runSearch(globalNavCtrl.searchText)" class="btn btn-default">Submit</button>
+        </form>
+        <h3 class="col-xs-12 col-sm-12 col-md-12 page-content" ng-controller="donateCategoryPageController">Donate
+            {{category}}
+        </h3>
+        <div class="col-xs-12 col-sm-12 col-md-12 page-content" data-ng-repeat="donation in donations.result">
+            <p>{{donation.name}}</p>
+            <p>{{donation.date}}</p>
+            <p>{{donation.id}}</p>
+            <p>{{donation.city}}</p>
+            <p>{{donation.time}}</p>
         </div>
         <p>{{donations.data}}</p>
     </div>
